@@ -4,6 +4,7 @@
 		text-decoration: none;
 		position: relative;
 		text-align: left;
+		display: block;
 
 		.no-touch &:hover {
 
@@ -93,6 +94,136 @@
 	}
 
 
+	/* TAB LAYOUT LEFT */
+
+	&.tab-layout-left {
+
+		.tabs-tab-items {
+			width: 20%;
+			float: left;
+		}
+
+		.tab-item {
+			margin-bottom: 1px;
+			z-index: 2;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&.selected {
+
+				&:after {
+					opacity: 1;
+					transform: translateX(0);
+					border-color: transparent transparent transparent @item-selected-color;
+				}
+			}
+
+			&:after {
+				position: absolute;
+				right: -13px;
+				top: 50%;
+				margin-top: -8.25px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 10.5px 0 10.5px 13px;
+				content: '';
+				z-index: 1;
+				border-color: transparent transparent transparent @item-color;
+				transform: translateX(-13px);
+				opacity: 0;
+				transition: all 0.25s ease-in;
+			}
+		}
+
+		.tab-item-inner {
+			padding: 20px 20px 20px 45px;
+			border-top-left-radius: 20px;
+			border-bottom-left-radius: 20px;
+		}
+
+		.tabs-content-items {
+			width: 80%;
+			float: left;
+			overflow-y: scroll;
+			box-sizing: border-box;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.tabs-content-items-inner {
+			padding: 20px 20px 20px 30px;
+		}	
+
+		@media all and (max-width: @device-width-medium) {
+
+			.tabs-tab-items {
+				width: 10%;
+			}
+
+			.tabs-tab-items {
+				overflow: hidden;
+			}
+
+			.tab-item {
+				height: 60px;
+				background-color: @item-color;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+
+				.no-touch &:hover {
+					background-color: @item-hover-color;
+				}
+
+				&.selected {
+					background-color: @item-selected-color;
+				}
+
+				&.visited {
+					background-color: @item-visited-color;
+				}
+
+				&:after {
+					display: none;
+				}
+			}
+
+	        .tab-item-inner {
+				display: none;
+			}
+
+			.tab-item-image {
+				left: 50%;
+				margin-left: -12px;
+			}
+
+			.tabs-content-items-inner {
+				padding: 20px;
+			}
+
+			.tab-content-item-title-image {
+				position: static;
+				margin: 0px auto;
+				display: block;
+			}
+
+			.tab-content-item-title-inner {
+				padding: 10px 0;
+				text-align: center;
+			}
+	    }
+
+	    @media all and (max-width: @device-width-small) {
+
+			.tabs-tab-items {
+				width: 20%;
+			}
+		}
+	}
+
+
+	/* TAB LAYOUT TOP */
 
 	&.tab-layout-top {
 

@@ -21,16 +21,27 @@ define(function(require) {
         postRender: function() {
         	this.setReadyStatus();
         	this.setLayout();
+            this.listenTo(Adapt, 'device:resize', this.setLayout);
         	this.showContentItemAtIndex(0);
         	this.setTabSelectedAtIndex(0);
         },
 
         setLayout: function() {
-        	var tabLayout = this.model.get('_tabLayout');
-        	this.$el.addClass("tab-layout-" + tabLayout);
-        	if (tabLayout === 'top') {
-        		this.setTabLayoutTop();
-        	}
+            this.$el.removeClass("tab-layout-left tab-layout-top");
+            if (Adapt.device.screenSize == 'medium') {
+                this.$el.addClass("tab-layout-left");
+                this.setTabLayoutLeft();
+                
+            } else {
+                var tabLayout = this.model.get('_tabLayout');
+                this.$el.addClass("tab-layout-" + tabLayout);
+                if (tabLayout === 'top') {
+                    this.setTabLayoutTop();
+                } else if (tabLayout === 'left') {
+                    this.setTabLayoutLeft();
+                }
+            }
+        	
         },
 
         setTabLayoutTop: function() {
@@ -39,6 +50,19 @@ define(function(require) {
         	this.$('.tab-item').css({
         		width: itemWidth + '%'
         	});
+            this.$('.tabs-content-items').css({
+                height: 'auto'
+            });
+        },
+
+        setTabLayoutLeft: function() {
+            var height = $('.tabs-tab-items').height();
+            this.$('.tabs-content-items').css({
+                height: height + 'px'
+            });
+            this.$('.tab-item').css({
+                width: 'auto'
+            });
         },
 
         onTabItemClicked: function(event) {
