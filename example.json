@@ -1,0 +1,12 @@
+{
+    "_id":"c-05",
+    "_parentId":"b-05",
+    "_type":"component",
+    "_component":"tabs",
+    "_classes":"",
+    "_layout":"full",
+    "title":"Adapt Tabs",
+    "displayTitle":"Adapt Tabs",
+    "body":"Body text.",
+    "instruction":"Select the tabs to find out more."
+}

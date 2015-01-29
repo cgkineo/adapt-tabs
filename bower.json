@@ -1,0 +1,15 @@
+{
+  "name": "adapt-tabs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cgkineo/adapt-tabs",
+  "authors": [
+    "kirsty hames <kirsty.hames@kineo.com>"
+  ],
+  "description": "organise content into tab views",
+  "main": "/js/adapt-tabs.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3"
+}

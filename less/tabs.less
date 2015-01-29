@@ -1,0 +1,135 @@
+.tabs-component {
+
+	.tab-item {
+		text-decoration: none;
+		position: relative;
+		text-align: left;
+
+		.no-touch &:hover {
+
+			.tab-item-inner {
+				background-color: @item-hover-color;
+				color: @item-text-hover-color;
+			}
+		}
+
+		&.selected {
+
+			.tab-item-inner {
+				background-color: @item-selected-color;
+				color: @item-text-selected-color;
+			}
+		}
+
+		&.visited {
+
+			.tab-item-inner {
+				background-color: @item-visited-color;
+				color: @item-text-visited-color;
+			}
+		}
+	}
+
+	.tab-item-inner {
+		background-color: @item-color;
+		color: @item-text-color;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+		padding: 15px 20px 15px 45px;
+	}
+
+	.tab-item-image {
+		display: block;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-position: center;
+		background-size: contain;
+		position: absolute;
+		top: 50%;
+		left: 15px;
+		margin-top: -12px;
+		border: 2px solid @item-text-color;
+	}
+
+	.tabs-content-items {
+		border: 1px solid @item-selected-color;
+		background: @background-color;
+		position: relative;
+	}
+
+	.tabs-content-items-inner {
+		padding: 20px;
+	}
+
+	.tab-content {
+		display: none;
+	}
+
+	.tab-content-item-title {
+		position: relative;
+	}
+
+	.tab-content-item-title-image {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-position: center;
+		background-size: contain;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		margin-top: -50px;
+	}
+
+	.tab-content-item-title-inner {
+		padding: 50px 20px 50px 120px;
+	}
+
+	.tab-content-item-body {
+		margin-top: 20px;
+	}
+
+
+
+	&.tab-layout-top {
+
+		.tabs-tab-items {
+
+		}
+
+		.tab-item {
+			float: left;
+			transform: translateY(5px);
+			transition: all 0.3s ease-in;
+
+			&:first-child {
+				.tab-item-inner {
+					margin-left: 0;
+				}
+			}
+
+			&:last-child {
+				.tab-item-inner {
+					margin-right: 0;
+				}
+			}
+
+			&.selected {
+				transform: translateY(0);
+			}
+		}
+
+		.tab-item-inner {
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			margin: 0 1px;
+		}
+
+		.tabs-content-items {
+			min-height: 400px;
+		}
+	}
+}
