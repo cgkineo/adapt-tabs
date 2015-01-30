@@ -56,7 +56,7 @@ define(function(require) {
         },
 
         setTabLayoutLeft: function() {
-            var height = $('.tabs-tab-items').height();
+            var height = this.$('.tabs-tab-items').height();
             this.$('.tabs-content-items').css({
                 height: height + 'px'
             });
