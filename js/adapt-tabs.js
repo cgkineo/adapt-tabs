@@ -28,20 +28,18 @@ define(function(require) {
 
         setLayout: function() {
             this.$el.removeClass("tab-layout-left tab-layout-top");
-            if (Adapt.device.screenSize == 'medium') {
-                this.$el.addClass("tab-layout-left");
-                this.setTabLayoutLeft();
-                
-            } else {
+            if (Adapt.device.screenSize == 'large') {
                 var tabLayout = this.model.get('_tabLayout');
                 this.$el.addClass("tab-layout-" + tabLayout);
                 if (tabLayout === 'top') {
                     this.setTabLayoutTop();
                 } else if (tabLayout === 'left') {
                     this.setTabLayoutLeft();
-                }
-            }
-        	
+                }                
+            } else {
+                this.$el.addClass("tab-layout-left");
+                this.setTabLayoutLeft();
+            }        	
         },
 
         setTabLayoutTop: function() {
@@ -70,6 +68,7 @@ define(function(require) {
         	var index = $(event.currentTarget).index();
         	this.showContentItemAtIndex(index);
         	this.setTabSelectedAtIndex(index);
+        	this.setVisited($(event.currentTarget).index());
         },
 
         showContentItemAtIndex: function(index) {
@@ -107,10 +106,31 @@ define(function(require) {
         setTabSelectedAtIndex: function(index) {
         	this.$('.tab-item').removeClass('selected');
         	this.$('.tab-item').eq(index).addClass('selected');
-        }
+        	this.setVisited($(event.currentTarget).index());
+        },
+
+        setVisited: function(index) {
+	      	var item = this.model.get('_items')[index];
+	      	item._isVisited = true;
+	      	this.checkCompletionStatus();
+	    },
+
+	    getVisitedItems: function() {
+	      	return _.filter(this.model.get('_items'), function(item) {
+	        	return item._isVisited;
+	      	});
+	    },
+
+	    checkCompletionStatus: function() {
+	        if (this.getVisitedItems().length == this.model.get('_items').length) {
+	          	this.setCompletionStatus();
+	        }
+	    }
         
     });
     
     Adapt.register("tabs", Tabs);
+
+    return Tabs;
     
 });
