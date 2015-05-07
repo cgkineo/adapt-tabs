@@ -105,7 +105,7 @@ define(function(require) {
 
         setTabSelectedAtIndex: function(index) {
         	this.$('.tab-item').removeClass('selected');
-        	this.$('.tab-item').eq(index).addClass('selected');
+        	this.$('.tab-item').eq(index).addClass('selected visited');
         	this.setVisited($(event.currentTarget).index());
         },
 
