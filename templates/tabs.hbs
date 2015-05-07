@@ -1,40 +1,40 @@
 <div class="tabs-inner component-inner">
-    {{> component this}}
-    <div class="tabs-widget component-widget clearfix">
+	{{> component this}}
+	<div class="tabs-widget component-widget clearfix">
 
-    <div class="tabs-tab-items">
-    	<div class="tabs-tab-items-inner clearfix">
-	    	{{#each _items}}
-	    	<a href="#" class="tab-item">
-	    		<span class="tab-item-image" style="background-image:url({{graphic}})"></span>
-	    		<span class="tab-item-inner">{{{title}}}</span>
-	    	</a>
-	    	{{/each}}
-    	</div>
-    </div>
+	<div class="tabs-tab-items">
+		<div class="tabs-tab-items-inner clearfix">
+			{{#each _items}}
+			<a href="#" class="tab-item">
+				<span class="tab-item-image" style="background-image:url({{graphic}})"></span>
+				<span class="tab-item-inner">{{{title}}}</span>
+			</a>
+			{{/each}}
+		</div>
+	</div>
 
-    <div class="tabs-content-items">
-    	<div class="tabs-content-items-inner">
-	    	{{#each _items}}
-	    	<div class="tab-content">
-	    		<div class="tab-content-inner">
+	<div class="tabs-content-items">
+		<div class="tabs-content-items-inner">
+			{{#each _items}}
+			<div class="tab-content">
+				<div class="tab-content-inner">
 
-			    	<div class="tab-content-item-title">
-			    		<img class="tab-content-item-title-image" src="{{graphic}}" />
-			    		<h5 class="tab-content-item-title-inner">{{{title}}}</h5>
-			    	</div>
+					<div class="tab-content-item-title">
+						<img class="tab-content-item-title-image" src="{{graphic}}" />
+						<h5 class="tab-content-item-title-inner">{{{title}}}</h5>
+					</div>
 
-			    	<div class="tab-content-item-body">
-			    		<div class="tab-content-item-title-body">{{{body}}}</div>
-			    	</div>
+					<div class="tab-content-item-body">
+						<div class="tab-content-item-title-body">{{{body}}}</div>
+					</div>
 
-			    </div>
-	    	</div>
-	    	{{/each}}
-    	</div>
-    </div>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
 
 	<div class="tabs-content-icon icon icon-arrow-down"></div>
 
-    </div>
+	</div>
 </div>
