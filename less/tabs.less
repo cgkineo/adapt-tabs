@@ -1,20 +1,35 @@
 .tabs-component {
-
 	.tab-item {
-		text-decoration: none;
-		position: relative;
-		text-align: left;
 		display: block;
+		float: left;
+		position: relative;
+		text-decoration: none;
+		text-align: left;
+		transform: translateY(5px);
+		transition: all 0.3s ease-in;
+
+		&:last-child {
+			.tab-item-inner {
+				margin-right: 0;
+			}
+		}
 
 		.no-touch &:hover {
-
 			.tab-item-inner {
 				background-color: @item-hover-color;
 				color: @item-text-hover-color;
 			}
+
+			&.visited {
+				.tab-item-inner {
+					background-color: @item-visited-color;
+					color: @item-text-visited-color;
+				}
+			}
 		}
 
 		&.selected {
+			transform: translateY(0);
 
 			.tab-item-inner {
 				background-color: @item-selected-color;
@@ -23,7 +38,6 @@
 		}
 
 		&.visited {
-
 			.tab-item-inner {
 				background-color: @item-visited-color;
 				color: @item-text-visited-color;
@@ -31,33 +45,40 @@
 		}
 	}
 
-	.tab-item-inner {
-		background-color: @item-color;
-		color: @item-text-color;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: block;
-		padding: 15px 20px 15px 45px;
-	}
-
 	.tab-item-image {
-		display: block;
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
 		background-position: center;
 		background-size: contain;
-		position: absolute;
-		top: 50%;
+		border: 2px solid @item-text-color;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+		display: block;
+		height: 20px;
 		left: 15px;
 		margin-top: -12px;
-		border: 2px solid @item-text-color;
+		position: absolute;
+		top: 50%;
+		width: 20px;
+	}
+
+	.tab-item-inner {
+		background-color: @item-color;
+		-webkit-border-radius: 20px 20px 0 0;
+		-moz-border-radius: 20px 20px 0 0;
+		border-radius: 20px 20px 0 0;
+		color: @item-text-color;
+		display: block;
+		margin: 0 2px 0 0;
+		overflow: hidden;
+		padding: 15px 20px 15px 45px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	.tabs-content-items {
-		border: 1px solid @item-selected-color;
 		background: @background-color;
+		border: 1px solid @item-selected-color;
+		min-height: 400px;
 		position: relative;
 	}
 
@@ -74,15 +95,17 @@
 	}
 
 	.tab-content-item-title-image {
-		width: 100px;
-		height: 100px;
-		border-radius: 50%;
 		background-position: center;
 		background-size: contain;
-		position: absolute;
-		top: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+		height: 100px;
 		left: 0;
 		margin-top: -50px;
+		position: absolute;
+		top: 50%;
+		width: 100px;
 	}
 
 	.tab-content-item-title-inner {
@@ -93,18 +116,21 @@
 		margin-top: 20px;
 	}
 
+	.tabs-content-icon {
+		display: none;
+	}
 
 	/* TAB LAYOUT LEFT */
-
 	&.tab-layout-left {
-
 		.tabs-tab-items {
-			width: 20%;
 			float: left;
+			width: 20%;
 		}
 
 		.tab-item {
+			float: none;
 			margin-bottom: 1px;
+			transform: translateY(0);
 			z-index: 2;
 
 			&:last-child {
@@ -112,90 +138,74 @@
 			}
 
 			&.selected {
-
 				&:after {
+					border-color: transparent transparent transparent @item-selected-color;
 					opacity: 1;
 					transform: translateX(0);
-					border-color: transparent transparent transparent @item-selected-color;
 				}
 			}
 
 			&:after {
-				position: absolute;
-				right: -13px;
-				top: 50%;
-				margin-top: -8.25px;
-				width: 0;
-				height: 0;
+				border-color: transparent transparent transparent @item-color;
 				border-style: solid;
 				border-width: 10.5px 0 10.5px 13px;
 				content: '';
-				z-index: 1;
-				border-color: transparent transparent transparent @item-color;
-				transform: translateX(-13px);
+				height: 0;
+				margin-top: -8.25px;
 				opacity: 0;
+				position: absolute;
+				right: -13px;
+				top: 50%;
 				transition: all 0.25s ease-in;
+				transform: translateX(-13px);
+				width: 0;
+				z-index: 1;
 			}
 		}
 
 		.tab-item-inner {
+			-webkit-border-radius: 20px 0 0 20px;
+			-moz-border-radius: 20px 0 0 20px;
+			border-radius: 20px 0 0 20px;
+			margin: 0;
 			padding: 20px 20px 20px 45px;
-			border-top-left-radius: 20px;
-			border-bottom-left-radius: 20px;
 		}
 
 		.tabs-content-items {
-			width: 80%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
 			float: left;
 			overflow-y: scroll;
-			box-sizing: border-box;
-			-webkit-overflow-scrolling: touch;
+			width: 80%;
+			-webkit-overflow-scrolling: touch;			
 		}
 
 		.tabs-content-items-inner {
 			padding: 20px 20px 20px 30px;
-		}	
+		}
 
 		@media all and (max-width: @device-width-medium) {
-
 			.tabs-tab-items {
-				width: 10%;
-			}
-
-			.tabs-tab-items {
-				overflow: hidden;
+				width: 25%;
 			}
 
 			.tab-item {
-				height: 60px;
-				background-color: @item-color;
-				border-top-left-radius: 20px;
-				border-bottom-left-radius: 20px;
-
-				.no-touch &:hover {
-					background-color: @item-hover-color;
-				}
-
-				&.selected {
-					background-color: @item-selected-color;
-				}
-
-				&.visited {
-					background-color: @item-visited-color;
-				}
-
 				&:after {
 					display: none;
 				}
 			}
 
-	        .tab-item-inner {
+			.tab-item-image {
 				display: none;
 			}
 
-			.tab-item-image {
-				left: 50%;
-				margin-left: -12px;
+			.tab-item-inner {
+				padding: 20px 10px 20px 15px;
+			}
+
+			.tabs-content-items {
+				width: 75%;
 			}
 
 			.tabs-content-items-inner {
@@ -203,64 +213,43 @@
 			}
 
 			.tab-content-item-title-image {
-				position: static;
-				margin: 0px auto;
 				display: block;
+				margin: 0px auto;
+				position: static;
 			}
 
 			.tab-content-item-title-inner {
-				padding: 10px 0;
+				padding: 10px 0 0;
 				text-align: center;
 			}
-	    }
 
-	    @media all and (max-width: @device-width-small) {
+			.tab-content-item-body {
+				margin-top: 10px;
+			}
 
+			.tabs-content-icon {
+				color: @black;
+				display: block;
+				text-align: center;
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				padding: 3px;
+			}
+		}
+
+		@media all and (max-width: @device-width-small) {
 			.tabs-tab-items {
-				width: 20%;
-			}
-		}
-	}
-
-
-	/* TAB LAYOUT TOP */
-
-	&.tab-layout-top {
-
-		.tabs-tab-items {
-
-		}
-
-		.tab-item {
-			float: left;
-			transform: translateY(5px);
-			transition: all 0.3s ease-in;
-
-			&:first-child {
-				.tab-item-inner {
-					margin-left: 0;
-				}
+				width: 30%;
 			}
 
-			&:last-child {
-				.tab-item-inner {
-					margin-right: 0;
-				}
+			.tab-item-inner {
+				padding: 20px 10px;
 			}
 
-			&.selected {
-				transform: translateY(0);
+			.tabs-content-items {
+				width: 70%;
 			}
-		}
-
-		.tab-item-inner {
-			border-top-left-radius: 20px;
-			border-top-right-radius: 20px;
-			margin: 0 1px;
-		}
-
-		.tabs-content-items {
-			min-height: 400px;
 		}
 	}
 }
