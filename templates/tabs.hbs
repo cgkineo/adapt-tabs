@@ -1,35 +1,45 @@
-<div class="tabs-inner component-inner">
+<div class="tabs-inner component-inner" role="region" aria-label="{{_globals._components._tabs.ariaRegion}}" {{#if _globals._components._tabs.ariaRegion}}tabindex="0"{{/if}}>
 	{{> component this}}
 	<div class="tabs-widget component-widget clearfix">
-
-	<div class="tabs-tab-items">
-		<div class="tabs-tab-items-inner clearfix">
-			{{#each _items}}
-			<a href="#" class="tab-item">
-				<span class="tab-item-image" style="background-image:url({{graphic}})"></span>
-				<span class="tab-item-inner">{{{title}}}</span>
-			</a>
-			{{/each}}
-		</div>
-	</div>
 
 	<div class="tabs-content-items">
 		<div class="tabs-content-items-inner">
 			{{#each _items}}
-			<div class="tab-content">
+			<div class="tab-content item-{{@index}}">
 				<div class="tab-content-inner">
 
 					<div class="tab-content-item-title">
-						<img class="tab-content-item-title-image" src="{{graphic}}" />
-						<h5 class="tab-content-item-title-inner">{{{title}}}</h5>
+						<div class="tab-content-item-title-inner accessible-text-block" role="heading" aria-level="5" tabindex="0">
+							{{{title}}}
+						</div>
 					</div>
 
 					<div class="tab-content-item-body">
-						<div class="tab-content-item-title-body">{{{body}}}</div>
+						<div class="tab-content-item-body-inner">
+							{{{a11y_text body}}}
+						</div>
 					</div>
+
+					{{#if _graphic}}
+					<div class="tab-content-item-graphic">
+						<img class="tab-content-item-graphic-inner" src="{{{_graphic.src}}}" alt={{{_graphic.alt}}} tabindex="0"/>
+					</div>
+					{{/if}}
 
 				</div>
 			</div>
+			{{/each}}
+		</div>
+	</div>
+
+	<div class="tabs-navigation">
+		<div class="tabs-navigation-inner">
+			{{#each _items}}
+			<a href="#" class="tabs-navigation-item" role="button" aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}" data-id="item-{{@index}}">
+				<div class="tabs-navigation-item-inner">
+					{{{tabTitle}}}
+				</div>
+			</a>
 			{{/each}}
 		</div>
 	</div>

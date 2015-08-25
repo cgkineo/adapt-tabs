@@ -12,7 +12,7 @@ define(function(require) {
 	var Tabs = ComponentView.extend({
 
 		events: {
-			'click .tab-item': 'onTabItemClicked'
+			'click .tabs-navigation-item': 'onTabItemClicked'
 		},
 		
 		preRender: function() {
@@ -22,7 +22,7 @@ define(function(require) {
 			this.setReadyStatus();
 			this.setLayout();
 			this.listenTo(Adapt, 'device:resize', this.setLayout);
-			this.showContentItemAtIndex(0);
+			this.showContentItemAtIndex(0, true);
 			this.setTabSelectedAtIndex(0);
 		},
 
@@ -45,21 +45,15 @@ define(function(require) {
 		setTabLayoutTop: function() {
 			var itemsLength = this.model.get('_items').length;
 			var itemWidth = 100 / itemsLength;
-			this.$('.tab-item').css({
+
+			this.$('.tabs-navigation-item').css({
 				width: itemWidth + '%'
-			});
-			this.$('.tabs-content-items').css({
-				height: 'auto'
 			});
 		},
 
 		setTabLayoutLeft: function() {
-			var height = this.$('.tabs-tab-items').height();
-			this.$('.tabs-content-items').css({
-				height: height + 'px'
-			});
-			this.$('.tab-item').css({
-				width: 'auto'
+			this.$('.tabs-navigation-item').css({
+				width: 100 + '%'
 			});
 		},
 
@@ -68,45 +62,40 @@ define(function(require) {
 			var index = $(event.currentTarget).index();
 			this.showContentItemAtIndex(index);
 			this.setTabSelectedAtIndex(index);
-			this.setVisited($(event.currentTarget).index());
+			this.setVisited($(event.currentTarget).index());			
 		},
 
-		showContentItemAtIndex: function(index) {
-			this.$('.tab-content').velocity({
+		showContentItemAtIndex: function(index, skipFocus) {
+			var $contentItems = this.$('.tab-content');
+
+			$contentItems.removeClass('active').velocity({
 				opacity: 0,
 				translateY: '20px'
 			}, {
-				duration: 200,
+				duration: 0,
 				display: 'none'
 			});
-			this.$('.tab-content-item-title-image').velocity({
-				scaleX: 0.9,
-				scaleY: 0.9
-			}, {
-				duration: 200
-			});
 
-			var contentItem = this.$('.tab-content').eq(index);
-			var $contentItem = $(contentItem);
+			var $contentItem = $contentItems.eq(index);
 			$contentItem.velocity({
 				opacity: 1,
 				translateY: '0'
 			}, {
-				duration: 400,
-				display: 'block'
+				duration: 300,
+				display: 'block',
+				complete: _.bind(complete,this)
 			});
-			$contentItem.find('.tab-content-item-title-image').velocity({
-				scaleX: 1,
-				scaleY: 1
-			}, {
-				duration: 800
-			});
+
+			function complete() {
+				if (skipFocus) return;
+	            $contentItem.addClass('active').a11y_focus();
+			}
 		},
 
 		setTabSelectedAtIndex: function(index) {
-			this.$('.tab-item').removeClass('selected');
-			this.$('.tab-item').eq(index).addClass('selected visited');
-			this.setVisited($(event.currentTarget).index());
+			var $navigationItem = this.$('.tabs-navigation-item-inner');
+			$navigationItem.removeClass('selected').eq(index).addClass('selected visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
+			this.setVisited(index);
 		},
 
 		setVisited: function(index) {
