@@ -6,13 +6,13 @@ The component displays a vertically or horizontally stacked list of heading tabs
 
 ##Installation
 
-Open the /src/components folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
+Open the */src/components* folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
 
-Git clone the component, making sure to delete the hidden .git folder from the adapt-tabs folder.
+Git clone the component, making sure to delete the hidden **.git** folder from the *adapt-tabs* folder.
 
 ## Settings Overview
 
-The attributes listed below are used in *components.json* to configure **Accordion**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-tabs/blob/master/example.json).
+The attributes listed below are used in *components.json* to configure **Tabs**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-tabs/blob/master/example.json).
 
 ### Attributes
 
@@ -37,13 +37,13 @@ The attributes listed below are used in *components.json* to configure **Accordi
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.  
 
-**_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `left` and `top`. By default, component displays `left` layout for medium screen size.
+**_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `left` and `top`. By default, component displays `left` layout for medium screen size and below.
 
 **_items** (array): Multiple items may be created. Each _item_ represents one element of the tabs component and contains values for **tabTitle**, **title**, **body**, and **_graphic**. 
 
 >**tabTitle** (string): This text is displayed in the actual tab heading. Recommendation to keep this title short.
 
->**title** (string): This text is displayed as the element's header. It is displayed when the tab has been selected.
+>**title** (string): This text is displayed as the content panel's header. It is displayed when the tab has been selected.
 
 >**body** (string): This content will be displayed when the learner opens this content panel. It may contain HTML.  
 
@@ -60,7 +60,7 @@ guide the learner’s interaction with the component.
 
 ## Limitations
 
-**tabTitle** headings will be replaced by ... if the heading is too long for the container. 
+**tabTitle** headings will be replaced by **...** if the heading is too long for the container. 
 
 
 ----------------------------
