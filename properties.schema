@@ -1,0 +1,103 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/plugins/content/component/model.schema",
+  "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": true,
+      "default": "This component is comprised of hidden content panels that can contain text and images. Select the tab item titles to reveal the content panels.",
+      "inputType": "Text",
+      "validators": []
+    }
+  },
+  "properties":{
+    "_supportedLayout": {
+      "type": "string",
+      "required": true,
+      "enum": ["full-width", "half-width", "both"],
+      "default": "full-width",
+      "editorOnly": true
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the instruction text"
+    },
+    "_tabLayout":{
+      "type": "string",
+      "required": true,
+      "enum": ["left", "top"],
+      "default": "left",
+      "title": "Set Tabs visual layout to",
+      "inputType": {"type": "Select", "options":["left", "top"]},
+      "validators": [required],
+      "help": "This sets the tabs visual layout"
+    },
+    "_items": {
+      "type": "array",
+      "required": true,
+      "title": "Items",
+      "items": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "tabTitle": {
+            "type": "string",
+            "required": true,
+            "inputType": "Text",
+            "title": "Tab Item Title",
+            "default": "",
+            "validators": ["required"],
+            "help": "This is the tab item title"
+          },
+          "title": {
+            "type": "string",
+            "required": true,
+            "inputType": "Text",
+            "title": "Item Title",
+            "default": "",
+            "validators": ["required"],
+            "help": "This is the item title"
+          },
+          "body": {
+            "type": "string",
+            "required": false,
+            "inputType": "TextArea",
+            "title": "Item Body",
+            "default": "",
+            "validators": [],
+            "help": "This is the item body text that is hidden until the tab item title is clicked on"
+          },
+          "_graphic": {
+            "type": "object",
+            "required": false,
+            "title": "Graphic",
+            "properties":{
+              "alt": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "inputType": "Text",
+                "validators": [],
+                "help": "The alternative text for this image"
+              },
+              "src": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "inputType": "Asset:image",
+                "validators": [],
+                "help": "Optional image which will be rendered with the item body text"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
