@@ -66,11 +66,11 @@
           },
           "body": {
             "type": "string",
-            "required": true,
+            "required": false,
             "inputType": "TextArea",
             "title": "Item Body",
             "default": "",
-            "validators": ["required"],
+            "validators": [],
             "help": "This is the item body text that is hidden until the tab item title is clicked on"
           },
           "_graphic": {
