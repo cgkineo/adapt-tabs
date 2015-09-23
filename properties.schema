@@ -35,7 +35,7 @@
       "default": "left",
       "title": "Set Tabs visual layout to",
       "inputType": {"type": "Select", "options":["left", "top"]},
-      "validators": [required],
+      "validators": ["required"],
       "help": "This sets the tabs visual layout"
     },
     "_items": {
