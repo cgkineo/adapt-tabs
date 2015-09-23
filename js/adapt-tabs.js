@@ -1,9 +1,3 @@
-/*
-* adapt-tabs
-* Version - 0.0.0
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - kirsty hames <kirsty.hames@kineo.com>
-*/
 define(function(require) {
 
 	var ComponentView = require('coreViews/componentView');
