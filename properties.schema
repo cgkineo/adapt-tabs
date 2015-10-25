@@ -55,6 +55,15 @@
             "validators": ["required"],
             "help": "This is the tab item title"
           },
+          "mobileTabTitle": {
+            "type": "string",
+            "required": false,
+            "inputType": "Text",
+            "title": "Mobile Tab Item Title",
+            "default": "",
+            "validators": [],
+            "help": "This is the tab item title displayed on small devices"
+          },
           "title": {
             "type": "string",
             "required": true,

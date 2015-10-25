@@ -34,6 +34,7 @@ define(function(require) {
 				this.$el.addClass("tab-layout-left");
 				this.setTabLayoutLeft();
 			}        	
+			this.setTabText();
 		},
 
 		setTabLayoutTop: function() {
@@ -49,6 +50,21 @@ define(function(require) {
 			this.$('.tabs-navigation-item').css({
 				width: 100 + '%'
 			});
+		},
+
+		setTabText: function() {
+			var items = this.model.get('_items');
+			if (Adapt.device.screenSize == 'small') {
+				_.each(items, function (item, index) {
+					if (item.mobileTabTitle) {
+						this.$('.tabs-navigation-item-inner').eq(index).html(item.mobileTabTitle);
+					}
+				});
+			} else {
+				_.each(items, function (item, index) {
+						this.$('.tabs-navigation-item-inner').eq(index).html(item.tabTitle);
+				});
+			}
 		},
 
 		onTabItemClicked: function(event) {

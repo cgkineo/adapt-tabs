@@ -39,9 +39,11 @@ guide the learner’s interaction with the component.
 
 **_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `left` and `top`. By default, component displays `left` layout for medium screen size and below.
 
-**_items** (array): Multiple items may be created. Each *_item* represents one element of the tabs component and contains values for **tabTitle**, **title**, **body**, and **_graphic**. 
+**_items** (array): Multiple items may be created. Each *_item* represents one element of the tabs component and contains values for **tabTitle**, **mobileTabTitle**, **title**, **body**, and **_graphic**. 
 
 >**tabTitle** (string): This text is displayed in the actual tab heading. Recommend keeping this title short.
+
+>**mobileTabTitle** (string): This optional text is displayed in the actual tab heading on mobile devices, replacing **tabTitle**.
 
 >**title** (string): This text is displayed as the content panel's header. It is displayed when the tab has been selected.
 
