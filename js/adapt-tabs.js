@@ -29,11 +29,11 @@ define(function(require) {
 					this.setTabLayoutTop();
 				} else if (tabLayout === 'left') {
 					this.setTabLayoutLeft();
-				}                
+				}
 			} else {
 				this.$el.addClass("tab-layout-left");
 				this.setTabLayoutLeft();
-			}        	
+			}
 		},
 
 		setTabLayoutTop: function() {
@@ -56,7 +56,7 @@ define(function(require) {
 			var index = $(event.currentTarget).index();
 			this.showContentItemAtIndex(index);
 			this.setTabSelectedAtIndex(index);
-			this.setVisited($(event.currentTarget).index());			
+			this.setVisited($(event.currentTarget).index());
 		},
 
 		showContentItemAtIndex: function(index, skipFocus) {
@@ -109,8 +109,9 @@ define(function(require) {
 				this.setCompletionStatus();
 			}
 		}
-		
-	});
+	},{
+      template: 'tabs'
+   });
 	
 	Adapt.register("tabs", Tabs);
 
