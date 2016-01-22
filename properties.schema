@@ -7,7 +7,7 @@
     "ariaRegion": {
       "type": "string",
       "required": true,
-      "default": "This component is comprised of hidden content panels that can contain text and images. Select the tab item titles to reveal the content panels.",
+      "default": "A tabbed content container. Content can be text, graphic or both.",
       "inputType": "Text",
       "validators": []
     }
@@ -33,10 +33,10 @@
       "required": true,
       "enum": ["left", "top"],
       "default": "left",
-      "title": "Set Tabs visual layout to",
+      "title": "Tab button position",
       "inputType": {"type": "Select", "options":["left", "top"]},
       "validators": ["required"],
-      "help": "This sets the tabs visual layout"
+      "help": "Select whether the tab buttons should be shown on the left or or the top of the content panel"
     },
     "_items": {
       "type": "array",
@@ -71,7 +71,7 @@
             "title": "Item Body",
             "default": "",
             "validators": [],
-            "help": "This is the item body text that is hidden until the tab item title is clicked on"
+            "help": "Body text for the tab content panel (optional)."
           },
           "_graphic": {
             "type": "object",
@@ -92,7 +92,7 @@
                 "default": "",
                 "inputType": "Asset:image",
                 "validators": [],
-                "help": "Optional image which will be rendered with the item body text"
+                "help": "Image for the tab content panel (optional)."
               }
             }
           }
