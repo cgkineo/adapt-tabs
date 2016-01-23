@@ -13,14 +13,16 @@
 							{{{title}}}
 						</div>
 					</div>
-
+					
+					{{#if body}}
 					<div class="tab-content-item-body">
 						<div class="tab-content-item-body-inner">
 							{{{a11y_text body}}}
 						</div>
 					</div>
+					{{/if}}
 
-					{{#if _graphic}}
+					{{#if _graphic.src}}
 					<div class="tab-content-item-graphic">
 						<img class="tab-content-item-graphic-inner" src="{{{_graphic.src}}}" alt={{{_graphic.alt}}} tabindex="0"/>
 					</div>
