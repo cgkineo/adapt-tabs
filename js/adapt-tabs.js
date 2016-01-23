@@ -54,17 +54,10 @@ define(function(require) {
 
 		setTabText: function() {
 			var items = this.model.get('_items');
-			if (Adapt.device.screenSize == 'small') {
-				_.each(items, function (item, index) {
-					if (item.mobileTabTitle) {
-						this.$('.tabs-navigation-item-inner').eq(index).html(item.mobileTabTitle);
-					}
-				});
-			} else {
-				_.each(items, function (item, index) {
-						this.$('.tabs-navigation-item-inner').eq(index).html(item.tabTitle);
-				});
-			}
+			_.each(items, function (item, index) {
+				var tabTitle = (Adapt.device.screenSize === 'small' && item.mobileTabTitle) ? item.mobileTabTitle : item.tabTitle;
+				this.$('.tabs-navigation-item-inner').eq(index).html(tabTitle);
+			}, this);
 		},
 
 		onTabItemClicked: function(event) {
