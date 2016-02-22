@@ -1,15 +1,17 @@
 {
-  "name": "adapt-tabs",
-  "version": "2.0.0",
-  "framework": "^2.0.0",
-  "displayName" : "Tabs",
-  "component" : "tabs",
-  "description": "Organise content into tab views",
-  "main": "/js/adapt-tabs.js",
-  "keywords": [
-    "adapt-plugin",
-    "adapt-component"
-  ],
-  "license": "GPL-3.0",
-  "homepage": "https://github.com/cgkineo/adapt-tabs"
+    "name": "adapt-tabs",
+    "repository": "git://github.com/cgkineo/adapt-tabs",
+    "framework": "^2.0.0",
+    "version": "2.0.0",
+    "homepage": "https://github.com/cgkineo/adapt-tabs",
+    "issues": "https://github.com/cgkineo/adapt-tabs/issues/",
+    "displayName": "Tabs",
+    "component": "tabs",
+    "description": "Organise content into tab views",
+    "main": "/js/adapt-tabs.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-component"
+    ],
+    "license": "GPLv3"
 }
