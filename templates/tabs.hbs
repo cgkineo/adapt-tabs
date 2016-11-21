@@ -8,11 +8,13 @@
 			<div class="tab-content item-{{@index}}">
 				<div class="tab-content-inner">
 
+					{{#if title}}
 					<div class="tab-content-item-title">
 						<div class="tab-content-item-title-inner accessible-text-block" role="heading" aria-level="5" tabindex="0">
 							{{{title}}}
 						</div>
 					</div>
+					{{/if}}
 					
 					{{#if body}}
 					<div class="tab-content-item-body">
