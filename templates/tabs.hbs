@@ -40,7 +40,7 @@
 		<div class="tabs-navigation-inner">
 			{{#each _items}}
 			<a href="#" class="tabs-navigation-item" role="button" aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}" data-id="item-{{@index}}">
-				<div class="tabs-navigation-item-inner">
+				<div class="tabs-navigation-item-inner {{#if _isVisited}}visited{{/if}}">
 					{{{tabTitle}}}
 				</div>
 			</a>

@@ -2,7 +2,7 @@
     "name": "adapt-tabs",
     "repository": "git://github.com/cgkineo/adapt-tabs",
     "framework": "^2.0.0",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "homepage": "https://github.com/cgkineo/adapt-tabs",
     "issues": "https://github.com/cgkineo/adapt-tabs/issues/",
     "displayName": "Tabs",
