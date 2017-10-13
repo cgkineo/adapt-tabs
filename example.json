@@ -1,11 +1,11 @@
-// to go in component.json
+// to go in components.json
 {
     "_id": "c-05",
     "_parentId": "b-05",
     "_type": "component",
     "_component": "tabs",
     "_classes": "",
-    "_layout":" full",
+    "_layout": "full",
     "title": "Tabs",
     "displayTitle": "Tabs",
     "body": "Body text.",

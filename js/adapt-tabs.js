@@ -1,7 +1,7 @@
-define(function(require) {
-
-	var ComponentView = require('coreViews/componentView');
-	var Adapt = require('coreJS/adapt');
+define([
+	'core/js/adapt',
+	'core/js/views/componentView'
+], function(Adapt, ComponentView) {
 
 	var Tabs = ComponentView.extend({
 
@@ -82,7 +82,7 @@ define(function(require) {
 
 			function complete() {
 				if (skipFocus) return;
-	            $contentItem.addClass('active').a11y_focus();
+	        	$contentItem.addClass('active').a11y_focus();
 			}
 		},
 
@@ -105,16 +105,15 @@ define(function(require) {
 		},
 
 		checkCompletionStatus: function() {
-			if (this.getVisitedItems().length == this.model.get('_items').length) {
+			if (this.getVisitedItems().length === this.model.get('_items').length) {
 				this.setCompletionStatus();
 			}
 		}
 	},{
-      template: 'tabs'
-   });
+    	template: 'tabs'
+	});
 	
 	Adapt.register("tabs", Tabs);
 
 	return Tabs;
-	
 });
