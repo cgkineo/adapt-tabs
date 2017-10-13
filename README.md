@@ -1,12 +1,14 @@
 # adapt-tabs
 
-**Tabs** is a C&G Kineo *presentation component*.  
+**Tabs** is a Kineo *presentation component*.  
 
 The component displays a vertically or horizontally stacked list of heading tabs. Each heading is associated with a hidden content panel. Clicking a heading toggles the visibility of its content panel. The first content panel is visible by default. Content panels may contain text and/or an image.
 
 ## Installation
 
-Open the */src/components* folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
+If using the [Adapt CLI](https://github.com/adaptlearning/adapt-cli), run `adapt install adapt-tabs`.
+
+Alternatively, open the */src/components* folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
 
 Git clone the component, making sure to delete the hidden **.git** folder from the *adapt-tabs* folder.
 
