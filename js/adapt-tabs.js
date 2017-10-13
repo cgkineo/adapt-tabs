@@ -27,9 +27,9 @@ define([
 				this.$el.addClass("tab-layout-" + tabLayout);
 				if (tabLayout === 'top') {
 					this.setTabLayoutTop();
-				} else if (tabLayout === 'left') {
-					this.setTabLayoutLeft();
-				}
+					return;
+				}	
+				this.setTabLayoutLeft();
 			} else {
 				this.$el.addClass("tab-layout-left");
 				this.setTabLayoutLeft();
