@@ -63,8 +63,8 @@ guide the learner’s interaction with the component.
 **tabTitle** headings will be replaced by **...** if the heading is too long for the container. 
 
 ----------------------------
-**Version number:**  2.0.3  
-**Framework versions:** 2.0  
+**Version number:**  2.0.4  
+**Framework versions:** 2.0+  
 **Author / maintainer:** Kineo  
 **Accessibility support:** WAI AA   
 **RTL support:** Yes  
