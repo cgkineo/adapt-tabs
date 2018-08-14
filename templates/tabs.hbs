@@ -5,7 +5,7 @@
 	<div class="tabs-content-items">
 		<div class="tabs-content-items-inner">
 			{{#each _items}}
-			<div class="tab-content item-{{@index}}">
+			<div class="tab-content item-{{@index}}{{#if _classes}} {{_classes}}{{/if}}">
 				<div class="tab-content-inner">
 
 					{{#if title}}
