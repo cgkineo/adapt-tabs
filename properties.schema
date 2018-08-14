@@ -73,6 +73,15 @@
             "validators": [],
             "help": "Body text for the tab content panel (optional)."
           },
+          "_classes": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "title": "Classes",
+            "inputType": "Text",
+            "validators": [],
+            "help": "Classes that are applied to the Tabs Item"
+          },
           "_graphic": {
             "type": "object",
             "required": false,
@@ -95,15 +104,6 @@
                 "help": "Image for the tab content panel (optional)."
               }
             }
-          },
-          "_classes": {
-            "type": "string",
-            "required": false,
-            "default": "",
-            "title": "Classes",
-            "inputType": "Text",
-            "validators": [],
-            "help": "Classes that are applied to the Tabs Item"
           }
         }
       }
