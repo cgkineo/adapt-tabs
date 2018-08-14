@@ -49,13 +49,13 @@ guide the learner’s interaction with the component.
 
 >**body** (string): This content will be displayed when the learner opens this content panel. It may contain HTML.
 
+>**_classes** (string): An optional class that will be applied to the Tabs Item.
+
 >**_graphic** (object): An optional image which is displayed below the item body when the learner opens this content panel. It contains values for *src* and *alt*.
 
 >>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/tabs.jpg*).
 
 >>**alt** (string): This text becomes the image’s alt attribute.
-
->**_classes** (string): An optional class that will be applied to the Tabs Item.
 
 ## Accessibility
 **Tabs** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in course.json.
@@ -65,9 +65,9 @@ guide the learner’s interaction with the component.
 **tabTitle** headings will be replaced by **...** if the heading is too long for the container.
 
 ----------------------------
-**Version number:**  2.0.4
-**Framework versions:** 2.0+
-**Author / maintainer:** Kineo
-**Accessibility support:** WAI AA
-**RTL support:** Yes
+**Version number:**  2.1.0  
+**Framework versions:** 2.0+  
+**Author / maintainer:** Kineo  
+**Accessibility support:** WAI AA  
+**RTL support:** Yes  
 **Cross-platform coverage:** To be confirmed
