@@ -8,7 +8,7 @@ define([
 		events: {
 			'click .tabs-navigation-item': 'onTabItemClicked'
 		},
-		
+
 		preRender: function() {
 		},
 
@@ -28,7 +28,7 @@ define([
 				if (tabLayout === 'top') {
 					this.setTabLayoutTop();
 					return;
-				}	
+				}
 				this.setTabLayoutLeft();
 			} else {
 				this.$el.addClass("tab-layout-left");
@@ -82,13 +82,18 @@ define([
 
 			function complete() {
 				if (skipFocus) return;
-	        	$contentItem.addClass('active').a11y_focus();
+				$contentItem.addClass('active').a11y_focus();
 			}
 		},
 
 		setTabSelectedAtIndex: function(index) {
-			var $navigationItem = this.$('.tabs-navigation-item-inner');
-			$navigationItem.removeClass('selected').eq(index).addClass('selected visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
+			var $navigationItem = this.$('.tabs-navigation-item');
+			var $navigationItemInner = this.$('.tabs-navigation-item-inner');
+			$navigationItem
+				.attr('aria-selected', 'false')
+				.eq(index)
+				.attr('aria-selected', 'true');
+			$navigationItemInner.removeClass('selected').eq(index).addClass('selected visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
 			this.setVisited(index);
 		},
 
@@ -110,9 +115,9 @@ define([
 			}
 		}
 	},{
-    	template: 'tabs'
+		template: 'tabs'
 	});
-	
+
 	Adapt.register("tabs", Tabs);
 
 	return Tabs;

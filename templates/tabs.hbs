@@ -1,16 +1,42 @@
-<div class="tabs-inner component-inner" role="region" aria-label="{{_globals._components._tabs.ariaRegion}}" {{#if _globals._components._tabs.ariaRegion}}tabindex="0"{{/if}}>
+<div class="tabs-inner component-inner">
 	{{> component this}}
 	<div class="tabs-widget component-widget clearfix">
+
+    <div class="tabs-navigation">
+        <div class="tabs-navigation-inner">
+            {{#each _items}}
+                <a
+                        href="#"
+                        class="tabs-navigation-item"
+                        id="tab-content-navigation-item-{{@index}}_{{../_id}}"
+                        role="button"
+                        aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}"
+                        data-id="item-{{@index}}"
+                        aria-selected="{{#if @index}}false{{else}}true{{/if}}"
+                >
+                    <div class="tabs-navigation-item-inner {{#if _isVisited}}visited{{/if}}">
+                        {{{tabTitle}}}
+                    </div>
+                </a>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="tabs-content-icon icon icon-arrow-down"></div>
 
 	<div class="tabs-content-items">
 		<div class="tabs-content-items-inner">
 			{{#each _items}}
-			<div class="tab-content item-{{@index}}{{#if _classes}} {{_classes}}{{/if}}">
+			<div
+					class="tab-content item-{{@index}}{{#if _classes}} {{_classes}}{{/if}}"
+					id="tab-content-{{@index}}_{{../_id}}"
+					aria-labelledby="tab-content-navigation-item-{{@index}}_{{../_id}}"
+			>
 				<div class="tab-content-inner">
 
 					{{#if title}}
 					<div class="tab-content-item-title">
-						<div class="tab-content-item-title-inner accessible-text-block" role="heading" aria-level="5" tabindex="0">
+						<div class="tab-content-item-title-inner accessible-text-block">
 							{{{title}}}
 						</div>
 					</div>
@@ -35,20 +61,6 @@
 			{{/each}}
 		</div>
 	</div>
-
-	<div class="tabs-navigation">
-		<div class="tabs-navigation-inner">
-			{{#each _items}}
-			<a href="#" class="tabs-navigation-item" role="button" aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}" data-id="item-{{@index}}">
-				<div class="tabs-navigation-item-inner {{#if _isVisited}}visited{{/if}}">
-					{{{tabTitle}}}
-				</div>
-			</a>
-			{{/each}}
-		</div>
-	</div>
-
-	<div class="tabs-content-icon icon icon-arrow-down"></div>
 
 	</div>
 </div>
