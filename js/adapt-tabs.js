@@ -21,17 +21,17 @@ define([
     },
 
     setLayout: function() {
-      this.$el.removeClass("tab-layout-left tab-layout-top");
+      this.$el.removeClass("is-top-layout is-left-layout");
       if (Adapt.device.screenSize == 'large') {
         var tabLayout = this.model.get('_tabLayout');
-        this.$el.addClass("tab-layout-" + tabLayout);
-        if (tabLayout === 'top') {
-          this.setTabLayoutTop();
+        this.$el.addClass("is-" + tabLayout + "-layout");
+        if (tabLayout === 'left') {
+          this.setTabLayoutLeft();
           return;
-        }	
-        this.setTabLayoutLeft();
+        }
+        this.setTabLayoutTop();
       } else {
-        this.$el.addClass("tab-layout-left");
+        this.$el.addClass("is-top-layout");
         this.setTabLayoutLeft();
       }
     },
@@ -88,7 +88,7 @@ define([
 
     setTabSelectedAtIndex: function(index) {
       var $navigationItem = this.$('.tabs__nav-item-inner');
-      $navigationItem.removeClass('selected').eq(index).addClass('selected visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
+      $navigationItem.removeClass('selected').eq(index).addClass('is-selected is-visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
       this.setVisited(index);
     },
 
