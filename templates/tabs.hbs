@@ -1,54 +1,56 @@
-<div class="tabs-inner component-inner" role="region" aria-label="{{_globals._components._tabs.ariaRegion}}" {{#if _globals._components._tabs.ariaRegion}}tabindex="0"{{/if}}>
+<div class="tabs__inner component__inner" role="region" aria-label="{{_globals._components._tabs.ariaRegion}}" {{#if _globals._components._tabs.ariaRegion}}tabindex="0"{{/if}}>
   {{> component this}}
-  <div class="tabs-widget component-widget clearfix">
+  <div class="tabs__widget component__widget clearfix">
 
-  <div class="tabs-content-items">
-    <div class="tabs-content-items-inner">
-      {{#each _items}}
-      <div class="tab-content item-{{@index}}{{#if _classes}} {{_classes}}{{/if}}">
-        <div class="tab-content-inner">
+    <div class="tabs__content">
+      <div class="tabs__content-inner">
 
-          {{#if title}}
-          <div class="tab-content-item-title">
-            <div class="tab-content-item-title-inner accessible-text-block" role="heading" aria-level="5" tabindex="0">
-              {{{title}}}
+        {{#each _items}}
+        <div class="tabs__content-item item-{{@index}}{{#if _classes}} {{_classes}}{{/if}}">
+          <div class="tabs__content-item-inner">
+
+            {{#if title}}
+            <div class="tabs__content-item-title">
+              <div class="tabs__content-item-title-inner accessible-text-block" role="heading" aria-level="5" tabindex="0">
+                {{{title}}}
+              </div>
             </div>
-          </div>
-          {{/if}}
+            {{/if}}
 
-          {{#if body}}
-          <div class="tab-content-item-body">
-            <div class="tab-content-item-body-inner">
-              {{{a11y_text body}}}
+            {{#if body}}
+            <div class="tabs__content-item-body">
+              <div class="tabs__content-item-body-inner">
+                {{{a11y_text body}}}
+              </div>
             </div>
-          </div>
-          {{/if}}
+            {{/if}}
 
-          {{#if _graphic.src}}
-          <div class="tab-content-item-graphic">
-            <img class="tab-content-item-graphic-inner" src="{{{_graphic.src}}}" alt="{{{_graphic.alt}}}" tabindex="0"/>
-          </div>
-          {{/if}}
+            {{#if _graphic.src}}
+            <div class="tabs__content-item-graphic">
+              <img class="tabs__content-item-graphic-inner" src="{{{_graphic.src}}}" alt="{{{_graphic.alt}}}" tabindex="0"/>
+            </div>
+            {{/if}}
 
+          </div>
         </div>
+        {{/each}}
+
       </div>
-      {{/each}}
     </div>
-  </div>
 
-  <div class="tabs-navigation">
-    <div class="tabs-navigation-inner">
-      {{#each _items}}
-      <a href="#" class="tabs-navigation-item" role="button" aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}" data-id="item-{{@index}}">
-        <div class="tabs-navigation-item-inner {{#if _isVisited}}visited{{/if}}">
-          {{{tabTitle}}}
-        </div>
-      </a>
-      {{/each}}
+    <div class="tabs__nav">
+      <div class="tabs__nav-inner">
+
+        {{#each _items}}
+        <a href="#" class="tabs__nav-item js-tabs-nav-item-click" role="button" aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}" data-id="item-{{@index}}">
+          <div class="tabs__nav-item-inner {{#if _isVisited}}visited{{/if}}">
+            {{{tabTitle}}}
+          </div>
+        </a>
+        {{/each}}
+        
+      </div>
     </div>
-  </div>
-
-  <div class="tabs-content-icon icon icon-arrow-down"></div>
 
   </div>
 </div>

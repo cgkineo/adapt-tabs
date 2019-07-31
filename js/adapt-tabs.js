@@ -6,7 +6,7 @@ define([
   var Tabs = ComponentView.extend({
 
     events: {
-      'click .tabs-navigation-item': 'onTabItemClicked'
+      'click .js-tabs-nav-item-click': 'onTabItemClicked'
     },
     
     preRender: function() {
@@ -40,13 +40,13 @@ define([
       var itemsLength = this.model.get('_items').length;
       var itemWidth = 100 / itemsLength;
 
-      this.$('.tabs-navigation-item').css({
+      this.$('.tabs__nav-item').css({
         width: itemWidth + '%'
       });
     },
 
     setTabLayoutLeft: function() {
-      this.$('.tabs-navigation-item').css({
+      this.$('.tabs__nav-item').css({
         width: 100 + '%'
       });
     },
@@ -60,9 +60,9 @@ define([
     },
 
     showContentItemAtIndex: function(index, skipFocus) {
-      var $contentItems = this.$('.tab-content');
+      var $contentItems = this.$('.tabs__content-item');
 
-      $contentItems.removeClass('active').velocity({
+      $contentItems.removeClass('is-active').velocity({
         opacity: 0,
         translateY: '20px'
       }, {
@@ -82,12 +82,12 @@ define([
 
       function complete() {
         if (skipFocus) return;
-          $contentItem.addClass('active').a11y_focus();
+          $contentItem.addClass('is-active').a11y_focus();
       }
     },
 
     setTabSelectedAtIndex: function(index) {
-      var $navigationItem = this.$('.tabs-navigation-item-inner');
+      var $navigationItem = this.$('.tabs__nav-item-inner');
       $navigationItem.removeClass('selected').eq(index).addClass('selected visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
       this.setVisited(index);
     },
