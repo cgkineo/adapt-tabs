@@ -1,10 +1,10 @@
 //----------------------
-// Top layout (mobile)
+// Mobile layout (top)
 //----------------------
 .is-top-layout {
   .tabs {
     &__nav {
-      top: -6em;
+      top: -(@item-padding * 5);
       width: 100%;
     }
   
@@ -14,7 +14,28 @@
     }
 
     &__content {
-      margin-top: 7em;
+      margin-top: (@item-padding * 6);
+    }
+  }
+}
+
+//----------------------
+// Desktop layout (top)
+//----------------------
+@media all and (min-width: @device-width-medium) {
+  .is-top-layout {
+    .tabs {
+      &__nav {
+        top: -(@item-padding * 2);
+      }
+
+      &__nav-inner {
+        flex-direction: row;
+      }
+
+      &__content {
+        margin-top: (@item-padding * 3);
+      }
     }
   }
 }

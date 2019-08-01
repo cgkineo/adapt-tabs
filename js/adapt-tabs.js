@@ -6,7 +6,7 @@ define([
   var Tabs = ComponentView.extend({
 
     events: {
-      'click .js-tabs-nav-item-click': 'onTabItemClicked'
+      'click .js-tabs-nav-item-btn-click': 'onTabItemClicked'
     },
     
     preRender: function() {
@@ -40,13 +40,13 @@ define([
       var itemsLength = this.model.get('_items').length;
       var itemWidth = 100 / itemsLength;
 
-      this.$('.tabs__nav-item').css({
+      this.$('.tabs__nav-item-btn').css({
         width: itemWidth + '%'
       });
     },
 
     setTabLayoutLeft: function() {
-      this.$('.tabs__nav-item').css({
+      this.$('.tabs__nav-item-btn').css({
         width: 100 + '%'
       });
     },
@@ -87,7 +87,7 @@ define([
     },
 
     setTabSelectedAtIndex: function(index) {
-      var $navigationItem = this.$('.tabs__nav-item-inner');
+      var $navigationItem = this.$('.tabs__nav-item-btn-inner');
       $navigationItem.removeClass('selected').eq(index).addClass('is-selected is-visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
       this.setVisited(index);
     },
