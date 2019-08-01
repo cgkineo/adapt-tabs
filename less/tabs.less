@@ -71,10 +71,16 @@
 // Global
 // ----------------------
 .tabs {
-  &__content-inner {
-    min-height: 20em; //prevent page jumping prior to velocity animation
+  &__content-item {
+    position: absolute;
+    top: 0;
   }
 }
+
+.is-active {
+  position: static;
+}
+
 
 // .tabs-component {
 // 	.tabs-navigation {

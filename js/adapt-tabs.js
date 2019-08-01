@@ -63,26 +63,24 @@ define([
       var $contentItems = this.$('.tabs__content-item');
 
       $contentItems.removeClass('is-active').velocity({
-        opacity: 0,
         translateY: '20px'
       }, {
         duration: 0,
-        display: 'none'
+        visibility: 'hidden'
       });
 
       var $contentItem = $contentItems.eq(index);
       $contentItem.velocity({
-        opacity: 1,
         translateY: '0'
       }, {
         duration: 300,
-        display: 'block',
+        visibility: 'visible',
         complete: _.bind(complete,this)
       });
 
       function complete() {
         if (skipFocus) return;
-        $contentItem.addClass('is-active').a11y_focus();
+          $contentItem.addClass('is-active').a11y_focus();
       }
     },
 
