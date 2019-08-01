@@ -3,7 +3,12 @@
 //----------------------
 .is-top-layout {
   .tabs {
+    &__widget {
+      position: relative;
+    }
+
     &__nav {
+      position: absolute;
       top: -(@item-padding * 5);
       width: 100%;
     }
@@ -41,15 +46,33 @@
 }
 
 //----------------------
-// Global styles
+// Desktop layout (left)
 //----------------------
-.tabs {
-  &__widget {
-    position: relative;
-  }
+@media all and (min-width: @device-width-medium) {
+  .is-left-layout {
+    .tabs {
+      &__widget {
+        display: flex;
+        flex-direction: row-reverse;
+      }
 
-  &__nav {
-    position: absolute;
+      &__nav {
+        width: 40%;
+      }
+
+      &__content {
+        width: 60%;
+      }
+    }
+  }
+}
+
+// ----------------------
+// Global
+// ----------------------
+.tabs {
+  &__content-inner {
+    min-height: 20em; //prevent page jumping prior to velocity animation
   }
 }
 

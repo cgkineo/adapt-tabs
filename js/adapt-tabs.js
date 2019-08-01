@@ -82,7 +82,7 @@ define([
 
       function complete() {
         if (skipFocus) return;
-          $contentItem.addClass('is-active').a11y_focus();
+        $contentItem.addClass('is-active').a11y_focus();
       }
     },
 
