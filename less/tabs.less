@@ -12,7 +12,7 @@
       top: -(@item-padding * 5);
       width: 100%;
     }
-  
+
     &__nav-inner {
       display: flex;
       flex-direction: column;
@@ -72,14 +72,23 @@
 // ----------------------
 .tabs {
   &__content-item {
-    position: absolute;
-    top: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    .transform(translateY(20px));
+  }
+
+  &__content-item.is-active {
+    height: auto;
+    opacity: 1;
+    .transform(translateY(0px));
+    .transition(all @animation-duration @animation-easing);
   }
 }
 
-.is-active {
-  position: static;
-}
+// .is-active {
+//   position: initial;
+// }
 
 
 // .tabs-component {

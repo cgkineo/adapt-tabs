@@ -8,7 +8,7 @@ define([
     events: {
       'click .js-tabs-nav-item-btn-click': 'onTabItemClicked'
     },
-    
+
     preRender: function() {
     },
 
@@ -61,27 +61,31 @@ define([
 
     showContentItemAtIndex: function(index, skipFocus) {
       var $contentItems = this.$('.tabs__content-item');
+      $contentItems.removeClass('is-active');
 
-      $contentItems.removeClass('is-active').velocity({
-        translateY: '20px'
-      }, {
-        duration: 0,
-        visibility: 'hidden'
-      });
+      // $contentItems.removeClass('is-active').velocity({
+      //   opacity: 0,
+      //   translateY: '20px'
+      // }, {
+      //   duration: 0,
+      //   display: 'none'
+      // });
 
       var $contentItem = $contentItems.eq(index);
-      $contentItem.velocity({
-        translateY: '0'
-      }, {
-        duration: 300,
-        visibility: 'visible',
-        complete: _.bind(complete,this)
-      });
+      $contentItem.addClass('is-active').a11y_focus();
+      // $contentItem.velocity({
+      //   opacity: 1,
+      //   translateY: '0'
+      // }, {
+      //   duration: 300,
+      //   display: 'block',
+      //   complete: _.bind(complete,this)
+      // });
 
-      function complete() {
-        if (skipFocus) return;
-          $contentItem.addClass('is-active').a11y_focus();
-      }
+      // function complete() {
+      //   if (skipFocus) return;
+      //     $contentItem.addClass('is-active').a11y_focus();
+      // }
     },
 
     setTabSelectedAtIndex: function(index) {
