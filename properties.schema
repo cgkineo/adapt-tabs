@@ -30,6 +30,19 @@
       "help": "This is the instruction text",
       "translatable": true
     },
+    "_setCompletionOn": {
+      "type": "string",
+      "required": false,
+      "default": "allItems",
+      "title": "Set completion on:",
+      "enum": ["inview", "allItems"],
+      "inputType": {
+        "type": "Select",
+        "options": ["inview", "allItems"]
+      },
+      "validators": [],
+      "help": "Whether completion is based on the learner having viewed all the tabs - or just having viewed the component"
+    },
     "_tabLayout": {
       "type": "string",
       "required": true,

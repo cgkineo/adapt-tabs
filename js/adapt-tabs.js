@@ -17,6 +17,10 @@ define([
       this.showContentItemAtIndex(0);
       this.setTabSelectedAtIndex(0);
       this.setVisited(0);
+
+      if (this.model.get('_setCompletionOn') === 'inview') {
+        this.setupInviewCompletion();
+      }
     },
 
     setLayout: function() {

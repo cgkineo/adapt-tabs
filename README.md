@@ -18,11 +18,7 @@ The attributes listed below are used in *components.json* to configure **Tabs**,
 
 ## Attributes
 
-**_id** (string): A unique identifier.
-
-**_parentId** (string): An identifier that links the component to the parent block.
-
-**_type** (string): The type of the particular item. Examples include block and component.
+[**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
 **_component** (string): This value must be: `tabs`.
 
@@ -30,14 +26,10 @@ The attributes listed below are used in *components.json* to configure **Tabs**,
 
 **_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
 
-**title** (string): The title of the particular item.
-
-**displayTitle** (string): This is the title that Adapt displays when viewing a course.
-
-**body** (string): The body text content of the particular item.
-
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.
+
+**\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single tab; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
 **_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `left` and `top`. By default, component displays `left` layout for medium screen size and below.
 
