@@ -6,7 +6,7 @@
       <div class="tabs__content-inner">
 
         {{#each _items}}
-        <div id="{{../_id}}-tabpanel-{{@index}}" role="tabpanel" aria-labelledby="{{../_id}}-tab-title-{{@index}}" class="tabs__content-item item-{{@index}} {{#if _classes}} {{_classes}}{{/if}}">
+        <div id="{{../_id}}-{{@index}}-tabpanel" role="tabpanel" aria-labelledby="{{../_id}}-{{@index}}-tabtitle" data-index="{{_index}}" class="tabs__content-item item-{{@index}} {{#if _classes}} {{_classes}}{{/if}}">
           <div class="tabs__content-item-inner">
 
             {{#if title}}
@@ -45,12 +45,12 @@
         <button
           role="tab"
           aria-selected="false"
-          aria-controls="{{../_id}}-tabpanel-{{@index}}"
+          aria-controls="{{../_id}}-{{@index}}-tabpanel"
           aria-label="{{{tabTitle}}}.{{#if _isVisited}} {{_globals._accessibility._ariaLabels.visited}}{{/if}}"
           class="tabs__nav-item-btn js-tabs-nav-item-btn-click{{#if _isVisited}} is-visited{{/if}}"
-          data-id="item-{{@index}}">
+          data-index="{{_index}}">
 
-          <div id="{{../_id}}-tab-title-{{@index}}" class="tabs__nav-item-btn-inner">{{{tabTitle}}}</div>
+          <div id="{{../_id}}-{{@index}}-tabtitle" class="tabs__nav-item-btn-inner">{{{tabTitle}}}</div>
         </button>
         {{/each}}
 
