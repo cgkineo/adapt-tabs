@@ -1,7 +1,8 @@
 define([
   'core/js/adapt',
-  'core/js/views/componentView'
-], function(Adapt, ComponentView) {
+  'core/js/views/componentView',
+  'core/js/models/componentModel'
+], function(Adapt, ComponentView, ComponentModel) {
 
   var Tabs = ComponentView.extend({
 
@@ -9,31 +10,30 @@ define([
       'click .js-tabs-nav-item-btn-click': 'onTabItemClicked'
     },
 
-    preRender: function() {
-    },
-
     postRender: function() {
       this.setReadyStatus();
       this.setLayout();
       this.listenTo(Adapt, 'device:resize', this.setLayout);
-      this.showContentItemAtIndex(0, true);
+      this.showContentItemAtIndex(0);
       this.setTabSelectedAtIndex(0);
+      this.setVisited(0);
     },
 
     setLayout: function() {
-      this.$el.removeClass("is-top-layout is-left-layout");
-      if (Adapt.device.screenSize == 'large') {
+      this.$el.removeClass('is-top-layout is-left-layout');
+      if (Adapt.device.screenSize === 'large') {
         var tabLayout = this.model.get('_tabLayout');
-        this.$el.addClass("is-" + tabLayout + "-layout");
+        this.$el.addClass('is-' + tabLayout + '-layout');
         if (tabLayout === 'left') {
           this.setTabLayoutLeft();
           return;
         }
         this.setTabLayoutTop();
-      } else {
-        this.$el.addClass("is-top-layout");
-        this.setTabLayoutLeft();
+        return;
       }
+
+      this.$el.addClass('is-top-layout');
+      this.setTabLayoutLeft();
     },
 
     setTabLayoutTop: function() {
@@ -51,47 +51,32 @@ define([
       });
     },
 
-    onTabItemClicked: function(event) {
-      event.preventDefault();
-      var index = $(event.currentTarget).index();
+    onTabItemClicked: function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      var index = $(e.currentTarget).index();
       this.showContentItemAtIndex(index);
       this.setTabSelectedAtIndex(index);
-      this.setVisited($(event.currentTarget).index());
+      this.setVisited(index);
     },
 
-    showContentItemAtIndex: function(index, skipFocus) {
-      var $contentItems = this.$('.tabs__content-item');
-      $contentItems.removeClass('is-active');
-
-      // $contentItems.removeClass('is-active').velocity({
-      //   opacity: 0,
-      //   translateY: '20px'
-      // }, {
-      //   duration: 0,
-      //   display: 'none'
-      // });
-
-      var $contentItem = $contentItems.eq(index);
-      $contentItem.addClass('is-active').a11y_focus();
-      // $contentItem.velocity({
-      //   opacity: 1,
-      //   translateY: '0'
-      // }, {
-      //   duration: 300,
-      //   display: 'block',
-      //   complete: _.bind(complete,this)
-      // });
-
-      // function complete() {
-      //   if (skipFocus) return;
-      //     $contentItem.addClass('is-active').a11y_focus();
-      // }
+    showContentItemAtIndex: function(index) {
+      this.$('.tabs__content-item')
+          .removeClass('is-active')
+          .eq(index)
+          .addClass('is-active')
+          .a11y_focus();
     },
 
     setTabSelectedAtIndex: function(index) {
-      var $navigationItem = this.$('.tabs__nav-item-btn-inner');
-      $navigationItem.removeClass('is-selected').eq(index).addClass('is-selected is-visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
-      this.setVisited(index);
+      var ariaLabel = this.model.get('_items')[index].tabTitle + '. ' + this.model.get('_globals')._accessibility._ariaLabels.visited;
+      this.$('.js-tabs-nav-item-btn-click')
+          .removeClass('is-selected')
+          .attr('aria-selected', 'false')
+          .eq(index)
+          .addClass('is-selected is-visited')
+          .attr('aria-label', ariaLabel)
+          .attr('aria-selected', true);
     },
 
     setVisited: function(index) {
@@ -101,21 +86,22 @@ define([
     },
 
     getVisitedItems: function() {
-      return _.filter(this.model.get('_items'), function(item) {
+      return this.model.get('_items').filter(function(item) {
         return item._isVisited;
       });
     },
 
     checkCompletionStatus: function() {
-      if (this.getVisitedItems().length === this.model.get('_items').length) {
-        this.setCompletionStatus();
-      }
+      if (this.getVisitedItems().length < this.model.get('_items').length) return;
+
+      this.setCompletionStatus();
     }
-  },{
-      template: 'tabs'
+  }, {
+    template: 'tabs'
   });
 
-  Adapt.register("tabs", Tabs);
-
-  return Tabs;
+  return Adapt.register('tabs', {
+    model: ComponentModel.extend({}),// create a new class in the inheritance chain so it can be extended per component type if necessary later
+    view: Tabs
+  });
 });

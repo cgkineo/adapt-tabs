@@ -1,4 +1,4 @@
-<div class="tabs__inner component__inner" role="region" aria-label="{{_globals._components._tabs.ariaRegion}}" {{#if _globals._components._tabs.ariaRegion}}tabindex="0"{{/if}}>
+<div class="tabs__inner component__inner">
   {{> component this}}
   <div class="tabs__widget component__widget clearfix">
 
@@ -6,12 +6,12 @@
       <div class="tabs__content-inner">
 
         {{#each _items}}
-        <div class="tabs__content-item item-{{@index}} {{#if _classes}} {{_classes}}{{/if}}">
+        <div id="{{../_id}}-tabpanel-{{@index}}" role="tabpanel" aria-labelledby="{{../_id}}-tab-title-{{@index}}" class="tabs__content-item item-{{@index}} {{#if _classes}} {{_classes}}{{/if}}">
           <div class="tabs__content-item-inner">
 
             {{#if title}}
             <div class="tabs__content-item-title">
-              <div class="tabs__content-item-title-inner accessible-text-block" role="heading" aria-level="5" tabindex="0">
+              <div class="tabs__content-item-title-inner" {{a11y_attrs_heading 'componentItem'}}>
                 {{{title}}}
               </div>
             </div>
@@ -20,14 +20,14 @@
             {{#if body}}
             <div class="tabs__content-item-body">
               <div class="tabs__content-item-body-inner">
-                {{{a11y_text body}}}
+                {{{compile body}}}
               </div>
             </div>
             {{/if}}
 
             {{#if _graphic.src}}
             <div class="tabs__content-item-graphic">
-              <img class="tabs__content-item-graphic-inner" src="{{{_graphic.src}}}" alt="{{{_graphic.alt}}}" tabindex="0"/>
+              <img class="tabs__content-item-graphic-inner" src="{{{_graphic.src}}}" {{#if _graphic.alt}}aria-label="{{_graphic.alt}}"{{else}}aria-hidden="true"{{/if}}/>
             </div>
             {{/if}}
 
@@ -39,16 +39,21 @@
     </div>
 
     <div class="tabs__nav">
-      <div class="tabs__nav-inner">
+      <div class="tabs__nav-inner" role="tablist">
 
         {{#each _items}}
-        <button class="tabs__nav-item-btn js-tabs-nav-item-btn-click" aria-label="{{{tabTitle}}} {{#if _isVisited}}. Visited{{/if}}" data-id="item-{{@index}}">
-          <div class="tabs__nav-item-btn-inner {{#if _isVisited}}visited{{/if}}">
-            {{{tabTitle}}}
-          </div>
+        <button
+          role="tab"
+          aria-selected="false"
+          aria-controls="{{../_id}}-tabpanel-{{@index}}"
+          aria-label="{{{tabTitle}}}.{{#if _isVisited}} {{_globals._accessibility._ariaLabels.visited}}{{/if}}"
+          class="tabs__nav-item-btn js-tabs-nav-item-btn-click{{#if _isVisited}} is-visited{{/if}}"
+          data-id="item-{{@index}}">
+
+          <div id="{{../_id}}-tab-title-{{@index}}" class="tabs__nav-item-btn-inner">{{{tabTitle}}}</div>
         </button>
         {{/each}}
-        
+
       </div>
     </div>
 
