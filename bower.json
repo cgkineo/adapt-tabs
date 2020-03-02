@@ -1,7 +1,7 @@
 {
   "name": "adapt-tabs",
-  "framework": ">=2",
-  "version": "2.1.0",
+  "framework": ">=5",
+  "version": "3.0.0",
   "homepage": "https://github.com/cgkineo/adapt-tabs",
   "issues": "https://github.com/cgkineo/adapt-tabs/issues/",
   "displayName": "Tabs",
@@ -12,5 +12,5 @@
     "adapt-plugin",
     "adapt-component"
   ],
-  "license": "GPLv3"
+  "license": "GPL-3.0"
 }
