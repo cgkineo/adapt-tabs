@@ -1,8 +1,8 @@
 define([
   'core/js/adapt',
   'core/js/views/componentView',
-  'core/js/models/componentModel'
-], function(Adapt, ComponentView, ComponentModel) {
+  'core/js/models/itemsComponentModel'
+], function(Adapt, ComponentView, ItemsComponentModel) {
 
   var Tabs = ComponentView.extend({
 
@@ -10,16 +10,35 @@ define([
       'click .js-tabs-nav-item-btn-click': 'onTabItemClicked'
     },
 
+    preRender: function() {
+      this.checkIfResetOnRevisit();
+
+      this.model.resetActiveItems();
+
+      this.listenTo(this.model.get('_children'), {
+        'change:_isActive': this.onItemsActiveChange,
+        'change:_isVisited': this.onItemsVisitedChange
+      });
+    },
+
     postRender: function() {
       this.setReadyStatus();
       this.setLayout();
       this.listenTo(Adapt, 'device:resize', this.setLayout);
-      this.showContentItemAtIndex(0);
-      this.setTabSelectedAtIndex(0);
-      this.setVisited(0);
+
+      this.model.setActiveItem(0);
 
       if (this.model.get('_setCompletionOn') === 'inview') {
         this.setupInviewCompletion();
+      }
+    },
+
+    checkIfResetOnRevisit: function() {
+      var isResetOnRevisit = this.model.get('_isResetOnRevisit');
+
+      // If reset is enabled set defaults
+      if (isResetOnRevisit) {
+        this.model.reset(isResetOnRevisit);
       }
     },
 
@@ -58,54 +77,38 @@ define([
     onTabItemClicked: function(e) {
       if (e && e.preventDefault) e.preventDefault();
 
-      var index = $(e.currentTarget).index();
-      this.showContentItemAtIndex(index);
-      this.setTabSelectedAtIndex(index);
-      this.setVisited(index);
+      this.model.setActiveItem($(e.currentTarget).data('index'));
     },
 
-    showContentItemAtIndex: function(index) {
-      this.$('.tabs__content-item')
-          .removeClass('is-active')
-          .eq(index)
-          .addClass('is-active')
-          .a11y_focus();
+    onItemsActiveChange: function(item, isActive) {
+      var dataFilter = '[data-index="' + item.get('_index') +'"]';
+
+      var $tabButton = this.$('.js-tabs-nav-item-btn-click').filter(dataFilter);
+      var $tabPanel = this.$('.tabs__content-item').filter(dataFilter);
+
+      $tabButton.toggleClass('is-selected', isActive).attr('aria-selected', isActive);
+      $tabPanel.toggleClass('is-active', isActive);
+
+      if (isActive) {
+        $tabPanel.a11y_focus();
+        item.toggleVisited(true);
+      }
     },
 
-    setTabSelectedAtIndex: function(index) {
-      var ariaLabel = this.model.get('_items')[index].tabTitle + '. ' + this.model.get('_globals')._accessibility._ariaLabels.visited;
-      this.$('.js-tabs-nav-item-btn-click')
-          .removeClass('is-selected')
-          .attr('aria-selected', 'false')
-          .eq(index)
-          .addClass('is-selected is-visited')
-          .attr('aria-label', ariaLabel)
-          .attr('aria-selected', true);
+    onItemsVisitedChange: function(item, isVisited) {
+      if (!isVisited) return;
+
+      var ariaLabel = item.get('tabTitle') + '. ' + this.model.get('_globals')._accessibility._ariaLabels.visited;
+      var $tabButton = this.$('.js-tabs-nav-item-btn-click').filter('[data-index="' + item.get('_index') +'"]');
+      $tabButton.addClass('is-visited').attr('aria-label', ariaLabel);
     },
 
-    setVisited: function(index) {
-      var item = this.model.get('_items')[index];
-      item._isVisited = true;
-      this.checkCompletionStatus();
-    },
-
-    getVisitedItems: function() {
-      return this.model.get('_items').filter(function(item) {
-        return item._isVisited;
-      });
-    },
-
-    checkCompletionStatus: function() {
-      if (this.getVisitedItems().length < this.model.get('_items').length) return;
-
-      this.setCompletionStatus();
-    }
   }, {
     template: 'tabs'
   });
 
   return Adapt.register('tabs', {
-    model: ComponentModel.extend({}),// create a new class in the inheritance chain so it can be extended per component type if necessary later
+    model: ItemsComponentModel,
     view: Tabs
   });
 });
