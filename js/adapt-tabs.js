@@ -90,7 +90,7 @@ define([
 
     setTabSelectedAtIndex: function(index) {
       var $navigationItem = this.$('.tabs__nav-item-btn-inner');
-      $navigationItem.removeClass('selected').eq(index).addClass('is-selected is-visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
+      $navigationItem.removeClass('is-selected').eq(index).addClass('is-selected is-visited').attr('aria-label', this.model.get("_items")[index].tabTitle + ". Visited");
       this.setVisited(index);
     },
 
