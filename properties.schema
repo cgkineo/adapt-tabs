@@ -38,7 +38,7 @@
       "title": "Tab button position",
       "inputType": {"type": "Select", "options":["left", "top"]},
       "validators": ["required"],
-      "help": "Select whether the tab buttons should be shown on the left or or the top of the content panel"
+      "help": "Whether the tab buttons should be shown on the left or or the top of the content panel"
     },
     "_items": {
       "type": "array",
@@ -55,7 +55,6 @@
             "title": "Tab Item Title",
             "default": "",
             "validators": ["required"],
-            "help": "This is the tab item title",
             "translatable": true
           },
           "title": {
@@ -65,7 +64,6 @@
             "title": "Item Title",
             "default": "",
             "validators": ["required"],
-            "help": "This is the item title",
             "translatable": true
           },
           "body": {
@@ -75,7 +73,6 @@
             "title": "Item Body",
             "default": "",
             "validators": [],
-            "help": "Body text for the tab content panel (optional).",
             "translatable": true
           },
           "_classes": {
@@ -98,7 +95,6 @@
                 "default": "",
                 "inputType": "Text",
                 "validators": [],
-                "help": "The alternative text for this image",
                 "translatable": true
               },
               "src": {
@@ -106,8 +102,7 @@
                 "required": false,
                 "default": "",
                 "inputType": "Asset:image",
-                "validators": [],
-                "help": "Image for the tab content panel (optional)."
+                "validators": []
               }
             }
           }
