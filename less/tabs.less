@@ -1,69 +1,28 @@
 //----------------------
-// Mobile layout (top)
+// Horizontal layout (default mobile view)
 //----------------------
-.is-top-layout {
-  .tabs {
-    &__widget {
-      position: relative;
-    }
-
-    &__nav {
-      position: absolute;
-      top: -(@item-padding * 5);
-      width: 100%;
-    }
-
-    &__nav-inner {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &__content {
-      margin-top: (@item-padding * 6);
-    }
-  }
+.is-horizontal-layout .tabs__widget {
+  flex-direction: column-reverse;
 }
 
 //----------------------
-// Desktop layout (top)
+// Vertical layout (default mobile view)
 //----------------------
-@media (min-width: @device-width-medium) {
-  .is-top-layout {
-    .tabs {
-      &__nav {
-        top: -(@item-padding * 2);
-      }
-
-      &__nav-inner {
-        flex-direction: row;
-      }
-
-      &__content {
-        margin-top: (@item-padding * 3);
-      }
-    }
+.is-vertical-layout {
+  .tabs__widget {
+    flex-direction: row-reverse;
   }
-}
 
-//----------------------
-// Desktop layout (left)
-//----------------------
-@media (min-width: @device-width-medium) {
-  .is-left-layout {
-    .tabs {
-      &__widget {
-        display: flex;
-        flex-direction: row-reverse;
-      }
+  .tabs__nav {
+    width: 30%;
+  }
 
-      &__nav {
-        width: 40%;
-      }
+  .tabs__nav-inner {
+    flex-direction: column;
+  }
 
-      &__content {
-        width: 60%;
-      }
-    }
+  .tabs__content {
+    width: 70%;
   }
 }
 
@@ -71,6 +30,18 @@
 // Global
 // ----------------------
 .tabs {
+  &__nav-inner {
+    display: flex;
+
+    @media (max-width: @device-width-medium) {
+      flex-direction: column;
+    }
+  }
+
+  &__widget {
+    display: flex;
+  }
+
   &__content-item {
     height: 0;
     overflow: hidden;
@@ -83,5 +54,58 @@
     opacity: 1;
     .transform(translateY(0px));
     .transition(all @animation-duration @animation-easing);
+  }
+}
+
+//----------------------
+// Theme
+//----------------------
+.tabs {
+  &__content {
+    background-color: @item-color-inverted-selected;
+    box-shadow: inset 0 0 0 0.25rem @item-color-selected;
+  }
+
+  &__content-inner {
+    padding: @item-padding;
+  }
+
+  &__content-item-title {
+    margin-bottom: @item-title-margin;
+    .item-title;
+  }
+
+  &__content-item-body a {
+    .link-text;
+  }
+
+  &__nav-item-btn {
+    padding: @item-padding;
+    background-color: @item-color;
+    color: @item-color-inverted;
+    .button-text;
+
+    .no-touch &:not(.is-selected):hover {
+      background-color: @item-color-hover;
+      color: @item-color-inverted-hover;
+      .transition(background-color @duration ease-in, color @duration ease-in;);
+    }
+  }
+
+  &__nav-item-btn.is-visited {
+    background-color: @visited;
+    color: @visited-inverted;
+  }
+
+  &__nav-item-btn.is-selected {
+    background-color: @item-color-selected;
+    color: @item-color-inverted-selected;
+  }
+
+  &__nav-item-btn-inner {
+    text-align: left;
+    .dir-rtl & {
+      text-align: right;
+    }
   }
 }
