@@ -26,6 +26,8 @@ The attributes listed below are used in *components.json* to configure **Tabs**,
 
 **\_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `"full"`, `"left"` or `"right"`.
 
+**\_minHeight** (number): This value defines the minimum height the item container displays. By default, the container is responsive to the content height. You only need to set this value if you want to uniform the content container size across tab items.
+
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.
 
@@ -57,9 +59,9 @@ guide the learner’s interaction with the component.
 **tabTitle** headings will be replaced by **...** if the heading is too long for the container.
 
 ----------------------------
-**Version number:**  3.0.0  
-**Framework versions:** 5.0+  
-**Author / maintainer:** Kineo  
-**Accessibility support:** WAI AA  
-**RTL support:** Yes  
+**Version number:**  3.0.0
+**Framework versions:** 5.0+
+**Author / maintainer:** Kineo
+**Accessibility support:** WAI AA
+**RTL support:** Yes
 **Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera

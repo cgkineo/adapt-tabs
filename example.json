@@ -10,7 +10,9 @@
         "displayTitle": "Tabs",
         "body": "Body text.",
         "instruction": "Select the tabs to find out more.",
-        "_tabLayout": "left",
+        "_tabLayout": "horizontal",
+        "_minHeight": "500px",
+        "_comment": "Only set min height if you want to uniform the content container size across tab items. By default, the container will display at the height of each item's content",
         "_items": [
             {
                 "tabTitle": "Tab Title 1",
@@ -52,8 +54,5 @@
                     "src": "course/en/images/tabs.jpg"
                 }
             }
-        ],
-        "_pageLevelProgress": {
-            "_isEnabled": true
-        }
+        ]
     }

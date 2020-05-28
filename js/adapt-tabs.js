@@ -42,24 +42,24 @@ define([
       }
     },
 
-    setLayout: function() {
-      this.$el.removeClass('is-top-layout is-left-layout');
+    setLayout: function () {
+      this.$el.removeClass('is-horizontal-layout is-vertical-layout');
       if (Adapt.device.screenSize === 'large') {
         var tabLayout = this.model.get('_tabLayout');
         this.$el.addClass('is-' + tabLayout + '-layout');
-        if (tabLayout === 'left') {
-          this.setTabLayoutLeft();
+        if (tabLayout === 'vertical') {
+          this.setTabLayoutVertical();
           return;
         }
-        this.setTabLayoutTop();
+        this.setTabLayoutHorizontal();
         return;
       }
 
-      this.$el.addClass('is-top-layout');
-      this.setTabLayoutLeft();
+      this.$el.addClass('is-horizontal-layout');
+      this.setTabLayoutVertical();
     },
 
-    setTabLayoutTop: function() {
+    setTabLayoutHorizontal: function () {
       var itemsLength = this.model.get('_items').length;
       var itemWidth = 100 / itemsLength;
 
@@ -68,7 +68,7 @@ define([
       });
     },
 
-    setTabLayoutLeft: function() {
+    setTabLayoutVertical: function () {
       this.$('.tabs__nav-item-btn').css({
         width: 100 + '%'
       });

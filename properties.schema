@@ -46,12 +46,12 @@
     "_tabLayout": {
       "type": "string",
       "required": true,
-      "enum": ["left", "top"],
-      "default": "left",
-      "title": "Tab button position",
-      "inputType": {"type": "Select", "options":["left", "top"]},
+      "enum": ["horizontal", "vertical"],
+      "default": "horizontal",
+      "title": "Tab button layout",
+      "inputType": {"type": "Select", "options":["vertical", "horizontal"]},
       "validators": ["required"],
-      "help": "Whether the tab buttons should be shown on the left or or the top of the content panel"
+      "help": "Whether the tab buttons should display horizontal across the top of the content panel, or vertically along the side of the content panel"
     },
     "_items": {
       "type": "array",
