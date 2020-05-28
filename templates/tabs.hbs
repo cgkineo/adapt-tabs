@@ -2,7 +2,7 @@
   {{> component this}}
   <div class="tabs__widget component__widget clearfix">
 
-    <div class="tabs__content">
+    <div class="tabs__content"{{#if _minHeight}} style="min-height: {{_minHeight}}"{{/if}}>
       <div class="tabs__content-inner">
 
         {{#each _items}}
