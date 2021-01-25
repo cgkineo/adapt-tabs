@@ -43,35 +43,19 @@ define([
     },
 
     setLayout: function () {
-      this.$el.removeClass('is-horizontal-layout is-vertical-layout');
-      if (Adapt.device.screenSize === 'large') {
-        var tabLayout = this.model.get('_tabLayout');
-        this.$el.addClass('is-' + tabLayout + '-layout');
-        if (tabLayout === 'vertical') {
-          this.setTabLayoutVertical();
-          return;
-        }
-        this.setTabLayoutHorizontal();
-        return;
-      }
+      var layout = Adapt.device.screenSize === 'large' ?
+        this.model.get('_tabLayout') :
+        'vertical';
 
-      this.$el.addClass('is-horizontal-layout');
-      this.setTabLayoutVertical();
-    },
+      var itemWidth = layout === 'horizontal' ?
+        100 / this.model.get('_items').length + '%' :
+        '';
 
-    setTabLayoutHorizontal: function () {
-      var itemsLength = this.model.get('_items').length;
-      var itemWidth = 100 / itemsLength;
+      this.$el
+        .removeClass('is-horizontal-layout is-vertical-layout')
+        .addClass('is-' + layout + '-layout');
 
-      this.$('.tabs__nav-item-btn').css({
-        width: itemWidth + '%'
-      });
-    },
-
-    setTabLayoutVertical: function () {
-      this.$('.tabs__nav-item-btn').css({
-        width: 100 + '%'
-      });
+      this.$('.tabs__nav-item-btn').css('width', itemWidth);
     },
 
     onTabItemClicked: function(e) {

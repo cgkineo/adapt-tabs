@@ -33,7 +33,7 @@ guide the learner’s interaction with the component.
 
 **\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single tab; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
-**\_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `"left"` and `"top"`. By default, component displays `left` layout for medium screen size and below.
+**\_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `"vertical"` and `"horizontal"`. By default, component displays `"vertical"` layout for medium screen size and below.
 
 **\_items** (array): Multiple items may be created. Each *\_item* represents one element of the tabs component and contains values for **tabTitle**, **title**, **body**, **\_classes** and **\_graphic**.
 
