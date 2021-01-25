@@ -30,15 +30,28 @@
       "help": "This is the instruction text",
       "translatable": true
     },
+    "_setCompletionOn": {
+      "type": "string",
+      "required": false,
+      "default": "allItems",
+      "title": "Set completion on:",
+      "enum": ["inview", "allItems"],
+      "inputType": {
+        "type": "Select",
+        "options": ["inview", "allItems"]
+      },
+      "validators": [],
+      "help": "Whether completion is based on the learner having viewed all the tabs - or just having viewed the component"
+    },
     "_tabLayout": {
       "type": "string",
       "required": true,
-      "enum": ["left", "top"],
-      "default": "left",
-      "title": "Tab button position",
-      "inputType": {"type": "Select", "options":["left", "top"]},
+      "enum": ["horizontal", "vertical"],
+      "default": "horizontal",
+      "title": "Tab button layout",
+      "inputType": {"type": "Select", "options":["vertical", "horizontal"]},
       "validators": ["required"],
-      "help": "Select whether the tab buttons should be shown on the left or or the top of the content panel"
+      "help": "Whether the tab buttons should display horizontal across the top of the content panel, or vertically along the side of the content panel. By default, component displays vertical layout for medium screen size and below."
     },
     "_items": {
       "type": "array",
@@ -55,7 +68,6 @@
             "title": "Tab Item Title",
             "default": "",
             "validators": ["required"],
-            "help": "This is the tab item title",
             "translatable": true
           },
           "title": {
@@ -65,7 +77,6 @@
             "title": "Item Title",
             "default": "",
             "validators": ["required"],
-            "help": "This is the item title",
             "translatable": true
           },
           "body": {
@@ -75,7 +86,6 @@
             "title": "Item Body",
             "default": "",
             "validators": [],
-            "help": "Body text for the tab content panel (optional).",
             "translatable": true
           },
           "_classes": {
@@ -98,7 +108,6 @@
                 "default": "",
                 "inputType": "Text",
                 "validators": [],
-                "help": "The alternative text for this image",
                 "translatable": true
               },
               "src": {
@@ -106,8 +115,7 @@
                 "required": false,
                 "default": "",
                 "inputType": "Asset:image",
-                "validators": [],
-                "help": "Image for the tab content panel (optional)."
+                "validators": []
               }
             }
           }

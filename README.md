@@ -18,30 +18,24 @@ The attributes listed below are used in *components.json* to configure **Tabs**,
 
 ## Attributes
 
-**_id** (string): A unique identifier.
+[**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
-**_parentId** (string): An identifier that links the component to the parent block.
+**\_component** (string): This value must be: `tabs`.
 
-**_type** (string): The type of the particular item. Examples include block and component.
+**\_classes** (string): CSS class name to be applied to the container div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
-**_component** (string): This value must be: `tabs`.
+**\_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `"full"`, `"left"` or `"right"`.
 
-**_classes** (string): CSS class name to be applied to the container div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
-
-**_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
-
-**title** (string): The title of the particular item.
-
-**displayTitle** (string): This is the title that Adapt displays when viewing a course.
-
-**body** (string): The body text content of the particular item.
+**\_minHeight** (number): This value defines the minimum height the item container displays. By default, the container is responsive to the content height. You only need to set this value if you want to uniform the content container size across tab items.
 
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.
 
-**_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `left` and `top`. By default, component displays `left` layout for medium screen size and below.
+**\_setCompletionOn** (string): Determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` (the default) requires the learner to view every single tab; `"inview"` requires only that the component has been viewed (i.e. passed completely through the browser viewport).
 
-**_items** (array): Multiple items may be created. Each *_item* represents one element of the tabs component and contains values for **tabTitle**, **title**, **body**, **_classes** and **_graphic**.
+**\_tabLayout** (string): Defines the layout of the tabs. Acceptable values are `"vertical"` and `"horizontal"`. By default, component displays `"vertical"` layout for medium screen size and below.
+
+**\_items** (array): Multiple items may be created. Each *\_item* represents one element of the tabs component and contains values for **tabTitle**, **title**, **body**, **\_classes** and **\_graphic**.
 
 >**tabTitle** (string): This text is displayed in the actual tab heading. Recommend keeping this title short.
 
@@ -51,7 +45,7 @@ guide the learner’s interaction with the component.
 
 >**\_classes** (string): An optional class that will be applied to the Tabs Item.
 
->**_graphic** (object): An optional image which is displayed below the item body when the learner opens this content panel. It contains values for *src* and *alt*.
+>**\_graphic** (object): An optional image which is displayed below the item body when the learner opens this content panel. It contains values for *src* and *alt*.
 
 >>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/tabs.jpg*).
 
@@ -65,9 +59,9 @@ guide the learner’s interaction with the component.
 **tabTitle** headings will be replaced by **...** if the heading is too long for the container.
 
 ----------------------------
-**Version number:**  2.1.1  
-**Framework versions:** 2.0+  
-**Author / maintainer:** Kineo  
-**Accessibility support:** WAI AA  
-**RTL support:** Yes  
-**Cross-platform coverage:** To be confirmed
+**Version number:**  3.0.0
+**Framework versions:** 5.0+
+**Author / maintainer:** Kineo
+**Accessibility support:** WAI AA
+**RTL support:** Yes
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera
