@@ -51,7 +51,7 @@
       "title": "Tab button layout",
       "inputType": {"type": "Select", "options":["vertical", "horizontal"]},
       "validators": ["required"],
-      "help": "Whether the tab buttons should display horizontal across the top of the content panel, or vertically along the side of the content panel. By default, component displays `vertical` layout for medium screen size and below."
+      "help": "Whether the tab buttons should display horizontal across the top of the content panel, or vertically along the side of the content panel. By default, component displays vertical layout for medium screen size and below."
     },
     "_items": {
       "type": "array",
