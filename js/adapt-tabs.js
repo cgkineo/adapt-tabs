@@ -72,9 +72,10 @@ define([
 
       $tabButton.toggleClass('is-selected', isActive).attr('aria-selected', isActive);
       $tabPanel.toggleClass('is-active', isActive);
+      Adapt.a11y.toggleHidden($tabPanel, !isActive);
 
       if (isActive) {
-        $tabPanel.a11y_focus();
+        Adapt.a11y.focusFirst($tabPanel, { preventScroll: true });
         item.toggleVisited(true);
       }
     },
