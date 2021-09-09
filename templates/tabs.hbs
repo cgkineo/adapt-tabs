@@ -6,7 +6,7 @@
       <div class="tabs__content-inner">
 
         {{#each _items}}
-        <div id="{{../_id}}-{{@index}}-tabpanel" role="tabpanel" aria-labelledby="{{../_id}}-{{@index}}-tabtitle" data-index="{{_index}}" class="tabs__content-item item-{{@index}} {{#if _classes}} {{_classes}}{{/if}}">
+        <div id="{{../_id}}-{{@index}}-tabpanel" role="tabpanel" aria-hidden="true" aria-labelledby="{{../_id}}-{{@index}}-tabtitle" data-index="{{_index}}" class="tabs__content-item item-{{@index}} {{#if _classes}} {{_classes}}{{/if}}">
           <div class="tabs__content-item-inner">
 
             {{#if title}}
