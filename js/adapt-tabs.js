@@ -22,11 +22,11 @@ define([
     },
 
     postRender: function() {
-      this.setReadyStatus();
       this.setLayout();
       this.listenTo(Adapt, 'device:resize', this.setLayout);
 
       this.model.setActiveItem(0);
+      this.setReadyStatus();
 
       if (this.model.get('_setCompletionOn') === 'inview') {
         this.setupInviewCompletion();
@@ -72,9 +72,13 @@ define([
 
       $tabButton.toggleClass('is-selected', isActive).attr('aria-selected', isActive);
       $tabPanel.toggleClass('is-active', isActive);
+      Adapt.a11y.toggleHidden($tabPanel, !isActive);
+
+      if (isActive && this.model.get('_isReady')) {
+        Adapt.a11y.focusFirst($tabPanel, { preventScroll: true });
+      }
 
       if (isActive) {
-        $tabPanel.a11y_focus();
         item.toggleVisited(true);
       }
     },
