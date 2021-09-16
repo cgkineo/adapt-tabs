@@ -20,6 +20,7 @@ class TabsView extends ComponentView {
 
   preRender() {
     this.reset();
+    this.setItemWidth();
     this.onTabItemClicked = this.onTabItemClicked.bind(this);
     this.onTabItemKeyUp = this.onTabItemKeyUp.bind(this);
     this.listenTo(Adapt, 'device:resize', this.setItemWidth);
@@ -34,18 +35,17 @@ class TabsView extends ComponentView {
     firstItem.toggleVisited(true);
   }
 
-  postRender() {
-    this.setItemWidth();
-    this.setReadyStatus();
-    if (this.model.get('_setCompletionOn') !== 'inview') return;
-    this.setupInviewCompletion();
-  }
-
   setItemWidth () {
     const itemWidth = (this.layout === 'horizontal')
       ? 100 / this.model.get('_items').length + '%'
       : '';
     this.model.set('itemWidth', itemWidth);
+  }
+
+  postRender() {
+    this.setReadyStatus();
+    if (this.model.get('_setCompletionOn') !== 'inview') return;
+    this.setupInviewCompletion();
   }
 
   onItemsActiveChange(item, isActive) {
