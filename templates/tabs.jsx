@@ -85,7 +85,7 @@ export default function Tabs(props) {
 
                   {title &&
                     <div className="tabs__content-item-title">
-                      <div className="tabs__content-item-title-inner" role="heading" level={a11y.ariaLevel('componentItem')}>
+                      <div className="tabs__content-item-title-inner" role="heading" aria-level={a11y.ariaLevel('componentItem')}>
                         {html(compile(title))}
                       </div>
                     </div>
