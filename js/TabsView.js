@@ -60,7 +60,8 @@ class TabsView extends ComponentView {
     const $tabs = $(e.currentTarget).parents('[role=tablist]').find('[role=tab]');
     const $tabPanel = $(e.currentTarget).parents('.tabs__widget').find('[role=tabpanel]');
     const filteredTabs = $tabs.filter(tab => tab !== index);
-    a11y.toggleAccessibleEnabled(filteredTabs, false);
+    a11y.toggleAccessible($tabs, true);
+    a11y.toggleAccessible(filteredTabs, false);
     a11y.focus($tabPanel[index]);
   }
 
@@ -68,8 +69,8 @@ class TabsView extends ComponentView {
     // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role
     const $tabs = $(event.currentTarget).parents('[role=tablist]').find('[role=tab]');
     const $tabPanel = $(event.currentTarget).parents('.tabs__widget').find('[role=tabpanel]');
-    a11y.toggleAccessibleEnabled($tabs, true);
-    a11y.toggleAccessibleEnabled($tabPanel, false);
+    a11y.toggleAccessible($tabs, true);
+    a11y.toggleAccessible($tabPanel, false);
     if (!$tabs.length) return;
     let currentIndex = $tabs.toArray().findIndex(tab => tab === event.currentTarget);
     switch (event.which) {
@@ -85,7 +86,7 @@ class TabsView extends ComponentView {
     a11y.focus($tabs[currentIndex]);
     const filteredTabs = $tabs.filter(tab => tab !== currentIndex);
     const filteredTabPanel = $tabPanel.filter(tabPanel => tabPanel === currentIndex);
-    a11y.toggleAccessibleEnabled(filteredTabs, false);
+    a11y.toggleAccessible(filteredTabs, false);
     filteredTabPanel.attr({ tabindex: '0' });
   }
 
