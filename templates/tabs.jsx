@@ -37,7 +37,6 @@ export default function Tabs(props) {
                 aria-selected={_isActive}
                 aria-controls={`${_id}-${index}-tabpanel`}
                 aria-label={`${tabTitle}.${_isVisited ? ` ${_globals._accessibility._ariaLabels.visited}` : ''}`}
-                tabIndex={_isActive ? 0 : -1}
                 className={classes([
                   'tabs__nav-item-btn',
                   'js-tabs-nav-item-btn-click',
