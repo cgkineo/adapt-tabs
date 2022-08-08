@@ -43,6 +43,7 @@ export default function Tabs(props) {
                   _isVisited && 'is-visited',
                   _isActive && 'is-selected'
                 ])}
+                tabIndex={_isActive ? 0 : -1}
                 onClick={onTabItemClicked}
                 onKeyUp={onTabItemKeyUp}
                 style={{ width: itemWidth }}
