@@ -55,7 +55,10 @@ class TabsView extends ComponentView {
 
   onTabItemClicked(e) {
     if (e && e.preventDefault) e.preventDefault();
-    this.model.setActiveItem($(e.currentTarget).data('index'));
+    const index = $(e.currentTarget).data('index');
+    this.model.setActiveItem(index);
+    const $tabPanel = $(e.currentTarget).parents('.tabs__widget').find('[role=tabpanel]');
+    a11y.focus($tabPanel[index]);
   }
 
   onTabItemKeyUp(event) {
@@ -72,6 +75,7 @@ class TabsView extends ComponentView {
         if (currentIndex === $tabs.length - 1) currentIndex = -1;
         currentIndex++;
     }
+    this.model.setActiveItem(currentIndex);
     a11y.focus($tabs[currentIndex]);
   }
 

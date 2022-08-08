@@ -43,6 +43,7 @@ export default function Tabs(props) {
                   _isVisited && 'is-visited',
                   _isActive && 'is-selected'
                 ])}
+                tabIndex={_isActive ? 0 : -1}
                 onClick={onTabItemClicked}
                 onKeyUp={onTabItemKeyUp}
                 style={{ width: itemWidth }}
@@ -73,6 +74,7 @@ export default function Tabs(props) {
                 role="tabpanel"
                 aria-hidden={!_isActive || null}
                 aria-labelledby={`${_id}-${index}-tabtitle`}
+                tabIndex={_isActive ? 0 : -1}
                 data-index={_index}
                 className={classes([
                   'tabs__content-item',
