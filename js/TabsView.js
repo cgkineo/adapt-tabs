@@ -7,6 +7,7 @@ class TabsView extends ComponentView {
 
   className() {
     return [
+      super.className(),
       `is-${this.layout}-layout`
     ].join(' ');
   }
