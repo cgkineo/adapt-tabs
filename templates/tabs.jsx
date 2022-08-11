@@ -1,6 +1,6 @@
 import a11y from 'core/js/a11y';
 import React from 'react';
-import { templates, classes, html, compile } from 'core/js/reactHelpers';
+import { templates, classes, compile } from 'core/js/reactHelpers';
 
 export default function Tabs(props) {
 
@@ -87,16 +87,14 @@ export default function Tabs(props) {
 
                   {title &&
                     <div className="tabs__content-item-title">
-                      <div className="tabs__content-item-title-inner" role="heading" aria-level={a11y.ariaLevel('componentItem')}>
-                        {html(compile(title))}
+                      <div className="tabs__content-item-title-inner" role="heading" aria-level={a11y.ariaLevel({ id: _id, level: 'componentItem' })} dangerouslySetInnerHTML={{ __html: compile(title) }}>
                       </div>
                     </div>
                   }
 
                   {body &&
                     <div className="tabs__content-item-body">
-                      <div className="tabs__content-item-body-inner">
-                        {html(compile(body))}
+                      <div className="tabs__content-item-body-inner" dangerouslySetInnerHTML={{ __html: compile(body) }}>
                       </div>
                     </div>
                   }

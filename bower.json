@@ -1,7 +1,7 @@
 {
   "name": "adapt-tabs",
   "framework": ">=5.14",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "homepage": "https://github.com/cgkineo/adapt-tabs",
   "issues": "https://github.com/cgkineo/adapt-tabs/issues/",
   "displayName": "Tabs",
