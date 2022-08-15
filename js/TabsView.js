@@ -25,7 +25,7 @@ class TabsView extends ComponentView {
     this.onTabItemClicked = this.onTabItemClicked.bind(this);
     this.onTabItemKeyUp = this.onTabItemKeyUp.bind(this);
     this.listenTo(Adapt, 'device:resize', this.setItemWidth);
-    this.listenTo(this.model.get('_children'), 'change:_isActive', this.onItemsActiveChange);
+    this.listenTo(this.model.getChildren(), 'change:_isActive', this.onItemsActiveChange);
   }
 
   reset() {
