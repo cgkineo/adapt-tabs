@@ -13,7 +13,7 @@ class TabsView extends ComponentView {
   }
 
   get layout() {
-    const layout = (device.screenSize === 'large' || device.screenSize === 'xlarge')
+    const layout = device.isScreenSizeMin('large')
       ? this.model.get('_tabLayout')
       : 'vertical';
     return layout;
