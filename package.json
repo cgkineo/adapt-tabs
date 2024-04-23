@@ -12,6 +12,7 @@
     "adapt-plugin",
     "adapt-component"
   ],
+  "private": true,
   "license": "GPL-3.0",
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
