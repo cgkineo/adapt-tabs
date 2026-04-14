@@ -1,4 +1,4 @@
-# adapt-tabs
+# DEPRECATED adapt-tabs
 
 **Tabs** is a Kineo *presentation component*.
 
