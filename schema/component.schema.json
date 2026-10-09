@@ -1,0 +1,142 @@
+{
+  "$anchor": "tabs-component",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$merge": {
+    "source": {
+      "$ref": "component"
+    },
+    "with": {
+      "properties": {
+        "_supportedLayout": {
+          "type": "string",
+          "title": "Supported layout",
+          "default": "full-width",
+          "enum": [
+            "full-width",
+            "half-width",
+            "both"
+          ],
+          "_adapt": {
+            "editorOnly": true
+          }
+        },
+        "instruction": {
+          "type": "string",
+          "title": "Instruction",
+          "default": "",
+          "_adapt": {
+            "translatable": true
+          }
+        },
+        "_setCompletionOn": {
+          "type": "string",
+          "title": "Completion criteria",
+          "description": "Whether completion is based on the learner having viewed all the tabs - or just having viewed the component",
+          "default": "allItems",
+          "enum": [
+            "inview",
+            "allItems"
+          ],
+          "_backboneForms": "Select"
+        },
+        "_tabLayout": {
+          "type": "string",
+          "title": "Tab button layout",
+          "description": "Whether the tab buttons display horizontally across the top of the content panel, or vertically along its side. Medium screens and below always use the vertical layout",
+          "default": "horizontal",
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "_backboneForms": "Select"
+        },
+        "_minHeight": {
+          "type": "string",
+          "title": "Minimum content height",
+          "description": "A CSS height (e.g. 500px) to give every tab's content panel the same minimum height. Leave blank to size each panel to its content",
+          "default": ""
+        },
+        "_items": {
+          "type": "array",
+          "title": "Items",
+          "items": {
+            "type": "object",
+            "required": [
+              "tabTitle"
+            ],
+            "properties": {
+              "tabTitle": {
+                "type": "string",
+                "title": "Tab title",
+                "description": "Text shown on the tab button. Keep it short; long titles are truncated",
+                "default": "",
+                "_adapt": {
+                  "translatable": true
+                }
+              },
+              "title": {
+                "type": "string",
+                "title": "Title",
+                "description": "Heading shown in the content panel when the tab is selected",
+                "default": "",
+                "_adapt": {
+                  "translatable": true
+                }
+              },
+              "body": {
+                "type": "string",
+                "title": "Body",
+                "default": "",
+                "_adapt": {
+                  "translatable": true
+                },
+                "_backboneForms": "TextArea"
+              },
+              "_graphic": {
+                "type": "object",
+                "title": "Graphic",
+                "default": {},
+                "properties": {
+                  "alt": {
+                    "type": "string",
+                    "title": "Alternative text",
+                    "description": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "src": {
+                    "type": "string",
+                    "title": "Source",
+                    "description": "Optional image shown below the item body",
+                    "_backboneForms": {
+                      "type": "Asset",
+                      "media": "image"
+                    }
+                  },
+                  "attribution": {
+                    "type": "string",
+                    "title": "Attribution",
+                    "description": "Text to be displayed as an attribution",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  }
+                }
+              },
+              "_classes": {
+                "type": "string",
+                "title": "Custom classes",
+                "description": "Classes applied to the tab's content panel. They must be predefined in one of the Less files. Separate multiple classes with a space",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
