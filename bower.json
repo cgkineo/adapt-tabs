@@ -7,6 +7,7 @@
   "displayName": "Tabs",
   "component": "tabs",
   "targetAttribute": "_tabs",
+  "authoringReady": true,
   "description": "Organise content into tab views",
   "main": "/js/adapt-tabs.js",
   "keywords": [
