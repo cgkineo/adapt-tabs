@@ -1,4 +1,4 @@
-# DEPRECATED adapt-tabs
+# adapt-tabs
 
 **Tabs** is a Kineo *presentation component*.
 
@@ -26,7 +26,7 @@ The attributes listed below are used in *components.json* to configure **Tabs**,
 
 **\_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `"full"`, `"left"` or `"right"`.
 
-**\_minHeight** (number): This value defines the minimum height the item container displays. By default, the container is responsive to the content height. You only need to set this value if you want to uniform the content container size across tab items.
+**\_minHeight** (string): A CSS height, e.g. `"500px"`. This value defines the minimum height the item container displays. By default, the container is responsive to the content height. You only need to set this value if you want to uniform the content container size across tab items.
 
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.
@@ -52,7 +52,7 @@ guide the learner’s interaction with the component.
 >>**alt** (string): This text becomes the image’s alt attribute.
 
 ## Accessibility
-**Tabs** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in course.json.
+**Tabs** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within `_globals._components._tabs` in course.json.
 
 ## Limitations
 
