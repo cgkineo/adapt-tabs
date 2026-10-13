@@ -6,6 +6,8 @@
   "issues": "https://github.com/cgkineo/adapt-tabs/issues/",
   "displayName": "Tabs",
   "component": "tabs",
+  "targetAttribute": "_tabs",
+  "authoringReady": true,
   "description": "Organise content into tab views",
   "main": "/js/adapt-tabs.js",
   "keywords": [
